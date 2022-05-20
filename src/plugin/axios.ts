@@ -1,5 +1,5 @@
 import axios from 'axios'
-import router from '@src/router'
+import router from '../router/index'
 
 const axiosInstance = axios.create({
   timeout: 1000 * 15,

@@ -3,6 +3,7 @@
 
 <template>
   <div class="text">
+    <SvgIcon name="add"></SvgIcon>
   </div>
 </template>
 

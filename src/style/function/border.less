@@ -1,0 +1,9 @@
+@import 'src/style/variable';
+
+.default-border(@color: @default-border-color) when (iscolor(@color)) {
+  border: @default-border-width solid @color;
+}
+
+.default-border(@border-width: @default-border-width) when (isnumber(@border-width)) {
+  border: @border-width solid @default-border-color;
+}

@@ -1,0 +1,40 @@
+@import 'src/style/variable';
+
+.default-font(@font-size: @default-font-size) when (isnumber(@font-size)) {
+  font-size: @font-size;
+  font-weight: @default-font-weight;
+  color: @default-font-color;
+}
+
+.default-font(@font-color: @default-font-color) when (iscolor(@font-color)) {
+  font-size: @default-font-size;
+  font-weight: @default-font-weight;
+  color: @font-color;
+}
+
+.font(@font-size, @font-weight) when (isnumber(@font-size)) and (isnumber(@font-weight)) {
+  font-size: @font-size;
+  font-weight: @font-weight;
+  color: @default-font-color;
+}
+
+.font(@font-size, @font-color) when (isnumber(@font-size)) and (iscolor(@font-color))  {
+  font-size: @font-size;
+  font-weight: @default-font-weight;
+  color: @font-color;
+}
+
+.font(@font-size, @font-weight, @font-color) {
+  font-size: @font-size;
+  font-weight: @font-weight;
+  color: @font-color;
+}
+
+.ellipsis-line() {
+  // [不能和 display: flex 同时使用]
+  // 单行文字，超出用省略号
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}

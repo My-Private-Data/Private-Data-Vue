@@ -1,11 +1,12 @@
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { svgIcon } from './src/plugin/svg-icon'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
 export default () => {
   return {
-    plugins: [vue(), svgIcon()],
+    plugins: [vue(), svgIcon(), DefineOptions()],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'), // `@` 指向 `src` 目录

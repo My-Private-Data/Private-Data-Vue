@@ -6,7 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-// eslint-disable-next-line no-undef
 defineOptions({
   name: 'TabButton',
 })

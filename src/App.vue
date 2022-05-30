@@ -5,9 +5,10 @@
 </template>
 
 <style lang="less">
-@import 'src/style/function';
+@import 'src/style/global';
 
 #app {
   .full-size;
+  background-color: var(--background-color);
 }
 </style>

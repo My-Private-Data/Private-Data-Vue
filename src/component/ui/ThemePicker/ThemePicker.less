@@ -1,0 +1,20 @@
+@import 'src/style/function';
+
+.theme-picker {
+  .flex-horizontal-list;
+
+  .theme-button {
+    .flex-diagonal-center;
+    .ellipsis-line;
+    .size(7rem, 3rem, 1rem);
+    cursor: pointer;
+    color: var(--blue);
+    &:hover {
+      background-color: var(--light-blue);
+    }
+
+    &.is-picked {
+      background-color: var(--light-blue);
+    }
+  }
+}

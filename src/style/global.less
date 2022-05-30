@@ -41,6 +41,7 @@ a,
 a:hover,
 a:active,
 a:visited {
+  .default-transition;
   text-decoration: none;
   outline: none;
 }
@@ -54,5 +55,8 @@ html, body {
   // 取消滚动条
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: @default-background-color;
+}
+
+div {
+  .default-transition;
 }

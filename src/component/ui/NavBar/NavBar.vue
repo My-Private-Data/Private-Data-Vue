@@ -1,9 +1,12 @@
 <template>
-  <div class="nav-bar"></div>
+  <div class="nav-bar">
+    <ThemePicker></ThemePicker>
+  </div>
 </template>
 
 <script lang="ts" setup>
-// eslint-disable-next-line no-undef
+import ThemePicker from '@/component/ui/ThemePicker/ThemePicker.vue'
+
 defineOptions({
   name: 'NavBar',
 })

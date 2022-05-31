@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 
 const defaultState = {
-  colorTheme: 'light-theme',
+  displayMode: 'light-mode',
+  displayTheme: 'pure-theme',
 }
 
 export default createStore({
@@ -9,10 +10,18 @@ export default createStore({
     return defaultState
   },
   mutations: {
-    setTheme(state: typeof defaultState, newTheme: string) {
-      state.colorTheme = newTheme
-      // 主题切换：改变 #app 的 class，影响使用的 Less 函数，从而影响所有使用的全局 css 变量
-      document.getElementById('app').className = newTheme
+    // 主题切换：改变 #app 的 class，影响使用的 Less 函数，从而影响所有使用的全局 css 变量
+    setDisplayMode(state: typeof defaultState, newDisplayMode: string) {
+      const app = document.getElementById('app')
+      app.classList.remove(state.displayMode)
+      app.classList.add(newDisplayMode)
+      state.displayMode = newDisplayMode
+    },
+    setDisplayTheme(state: typeof defaultState, newDisplayTheme: string) {
+      const app = document.getElementById('app')
+      app.classList.remove(state.displayTheme)
+      app.classList.add(newDisplayTheme)
+      state.displayTheme = newDisplayTheme
     },
   },
   actions: {
@@ -21,8 +30,8 @@ export default createStore({
     },
   },
   getters: {
-    colorTheme(state: typeof defaultState) {
-      return state.colorTheme
+    color(state: typeof defaultState) {
+      return state.displayMode
     },
   },
 })

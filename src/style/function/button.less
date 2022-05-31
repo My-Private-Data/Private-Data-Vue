@@ -1,0 +1,40 @@
+@import 'align';
+@import 'size';
+@import 'transition';
+
+@ratio: 0.618;
+@button-size: 5rem;
+@button-color: var(--container-background-color);
+@button-hover-color: var(--container-hover-background-color);
+@button-active-color: var(--container-active-background-color);
+
+.default-button(@width: @button-size) {
+  .flex-diagonal-center;
+  .button-transition;
+  cursor: pointer;
+  color: var(--text-color);
+  @border-radius:  @width * 0.15;
+  .size(@width, @ratio * @width, @border-radius);
+}
+
+.button(@width: @button-size) {
+  .default-button(@width);
+  background-color: @button-color;
+  &:hover {
+    background-color: @button-hover-color;
+  }
+  &.is-active{
+    background-color: @button-active-color;
+  }
+}
+
+.button(@width: @button-size, @color: @button-color) {
+  .default-button(@width);
+  background-color: @button-color;
+  &:hover {
+    background-color: @button-hover-color;
+  }
+  &.is-active{
+    background-color: @button-active-color;
+  }
+}

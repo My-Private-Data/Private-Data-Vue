@@ -4,7 +4,7 @@
     <div
       v-for="(mode, i) in displayModeList"
       :key="i"
-      :class="['display-mode-button', displayMode == mode ? 'is-picked' : '']"
+      :class="['display-mode-button', displayMode == mode ? 'is-active' : '']"
       @click="setDisplayMode(mode)"
     >
       {{ mode }}
@@ -14,7 +14,7 @@
       v-for="(theme, i) in displayThemeList"
       :key="i"
       class="display-theme-title"
-      :class="['display-theme-button', displayTheme == theme ? 'is-picked' : '']"
+      :class="['display-theme-button', displayTheme == theme ? 'is-active' : '']"
       @click="setDisplayTheme(theme)"
     >
       {{ theme }}

@@ -20,5 +20,6 @@ import DragList from '@/common/DragList/DragList.vue'
 
 .home {
   .full-size;
+  background-color: var(--web-background);
 }
 </style>

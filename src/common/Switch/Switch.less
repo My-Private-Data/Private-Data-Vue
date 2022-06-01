@@ -1,0 +1,24 @@
+@import 'src/style/function';
+
+.switch {
+  .switch-background {
+    cursor: pointer;
+    background-color: var(--fill-secondary);
+    // 防止 toggle 阴影外溢
+    overflow: hidden;
+
+    &.is-active {
+      background-color: var(--system-green);
+
+      .switch-toggle {
+        // (51-27-2)/51≈43.1%
+        margin-left: 43.1%;
+      }
+    }
+
+    .switch-toggle {
+      background-color: var(--system-white);
+      box-shadow: var(--button-shadow-primary);
+    }
+  }
+}

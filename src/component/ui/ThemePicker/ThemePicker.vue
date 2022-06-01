@@ -1,5 +1,6 @@
 <template>
   <div class="theme-picker">
+    <Switch @status="statusHandler"></Switch>
     <div class="display-mode-title">显示模式</div>
     <div
       v-for="(mode, i) in displayModeList"
@@ -25,6 +26,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, toRef, toRefs } from 'vue'
 import { useStore } from 'vuex'
+import Switch from '@/common/Switch/Switch.vue'
 
 defineOptions({
   name: 'ThemePicker',
@@ -35,6 +37,10 @@ const { displayMode, displayTheme } = toRefs(store.state)
 
 const displayModeList = ref(['light-mode', 'dark-mode'])
 const displayThemeList = ref(['pure-theme', 'border-theme'])
+
+function statusHandler(status: boolean) {
+  console.info(status)
+}
 
 function setDisplayMode(newVal: string) {
   store.commit('setDisplayMode', newVal)

@@ -1,40 +1,52 @@
 @import 'align';
+@import 'color';
 @import 'size';
 @import 'transition';
 
-@ratio: 0.618;
-@button-size: 5rem;
-@button-color: var(--container-background-color);
-@button-hover-color: var(--container-hover-background-color);
-@button-active-color: var(--container-active-background-color);
+@button-size: 36px;
+@button-label-color: var(--label-primary);
+@button-background-color: var(--background-primary);
+@button-hover-color: var(--system-grey4);
+@button-active-color: var(--system-blue);
+@button-active-label-color: var(--system-white);
 
-.default-button(@width: @button-size) {
+// button 应有的样式
+.default-button(@width: @button-size, @background-color: @button-background-color) {
+  @ratio: 0.618;
+  .size(@width, @ratio * @width);
   .flex-diagonal-center;
   .button-transition;
   cursor: pointer;
-  color: var(--text-color);
-  @border-radius:  @width * 0.15;
-  .size(@width, @ratio * @width, @border-radius);
-}
+  background-color: @button-background-color;
+  color: @button-label-color;
 
-.button(@width: @button-size) {
-  .default-button(@width);
-  background-color: @button-color;
   &:hover {
     background-color: @button-hover-color;
   }
-  &.is-active{
+
+  &.is-active {
     background-color: @button-active-color;
+    color: @button-active-label-color;
   }
 }
 
-.button(@width: @button-size, @color: @button-color) {
+.square-button(@width: @button-size, @button-background-color: @button-background-color) {
   .default-button(@width);
-  background-color: @button-color;
-  &:hover {
-    background-color: @button-hover-color;
-  }
-  &.is-active{
-    background-color: @button-active-color;
-  }
+  @radius-ratio: 0.216;
+  .size(@width, @width, @radius-ratio * @width);
+  box-shadow: var(--card-shadow-secondary);
+}
+
+.round-button(@width: @button-size) {
+  .default-button(@width);
+  @radius-ratio: 0.5;
+  .size(@width, @width, @radius-ratio * @width);
+  box-shadow: var(--button-shadow-secondary);
+}
+
+.card-button(@width: @button-size, @height: @width / 6) {
+  .default-button(@width);
+  @radius-ratio: 0.05;
+  .size(@width, @height, @radius-ratio * @width);
+  box-shadow: var(--card-shadow-secondary);
 }

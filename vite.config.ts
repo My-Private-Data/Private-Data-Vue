@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import { svgIcon } from './src/plugin/svg-icon'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import { svgIcon } from './src/plugin/svg-icon'
 
 // https://vitejs.dev/config/
 export default () => {
@@ -13,7 +13,6 @@ export default () => {
       },
     },
     base: './', // 打包路径
-
     server: {
       port: 3000, // 服务启动端口号
       open: true, // 服务启动时是否自动打开浏览器

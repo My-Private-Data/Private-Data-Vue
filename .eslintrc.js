@@ -17,6 +17,9 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
+    // custom rule
+    'no-undef': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    // common rule
     'no-console': [
       'error',
       {

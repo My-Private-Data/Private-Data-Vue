@@ -1,0 +1,20 @@
+@import 'src/style/function';
+
+.drag-list {
+  .list {
+    list-style: none;
+
+    .drag-move {
+      transition: transform .3s;
+    }
+
+    .list-item {
+      .size(10rem, 3rem, 1rem);
+      .flex-diagonal-center;
+      cursor: move;
+      background: var(--light-red);
+      color: var(--saturate-red);
+      margin-bottom: 6px;
+    }
+  }
+}

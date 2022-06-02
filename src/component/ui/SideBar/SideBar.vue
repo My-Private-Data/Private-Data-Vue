@@ -1,12 +1,14 @@
 <template>
   <div class="side-bar">
     <TabButton v-for="(app, i) in state.apps" :key="i" :icon="app.icon" :text="app.title"></TabButton>
+    <SegmentedPicker :option-list="['On', 'Off', 'On', 'Off']"></SegmentedPicker>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import TabButton from '@/common/TabButton/TabButton.vue'
+import SegmentedPicker from '@/common/SegmentedPicker/SegmentedPicker.vue'
 
 // eslint-disable-next-line no-undef
 defineOptions({

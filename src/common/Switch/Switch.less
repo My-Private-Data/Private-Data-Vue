@@ -1,14 +1,26 @@
 @import 'src/style/function';
 
 .switch {
+  .flex-diagonal-center;
+
   .switch-background {
     cursor: pointer;
-    background-color: var(--fill-secondary);
+    .flex-vertical-center;
+    .background(var(--fill-secondary));
     // 防止 toggle 阴影外溢
     overflow: hidden;
 
-    &.is-active {
+    &:focus {
+      outline: 0;
+    }
+
+    &.checked {
+      // 默认背景色
       background-color: var(--system-green);
+
+      &.blue-theme {
+        background-color: var(--system-blue);
+      }
 
       .switch-toggle {
         // (51-27-2)/51≈43.1%
@@ -16,9 +28,31 @@
       }
     }
 
+    &.loading,
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+
+      * {
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+
     .switch-toggle {
+      .physical-transition;
       background-color: var(--system-white);
       box-shadow: var(--button-shadow-primary);
+      flex-shrink: 0;
+    }
+
+    .switch-inner {
+      color: var(--label-secondary);
+      margin-left: 5%;
+
+      &.checked {
+        margin-left: -95%;
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import NavBar from '@/component/ui/NavBar/NavBar.vue'
 import SideBar from '@/component/ui/SideBar/SideBar.vue'
-import DragList from '@/common/DragList/DragList.vue'
 </script>
 
 <template>
@@ -9,7 +8,6 @@ import DragList from '@/common/DragList/DragList.vue'
     <NavBar></NavBar>
     <div class="main-content">
       <SideBar></SideBar>
-      <DragList></DragList>
       <router-view />
     </div>
   </div>
@@ -20,6 +18,6 @@ import DragList from '@/common/DragList/DragList.vue'
 
 .home {
   .full-size;
-  background-color: var(--web-background);
+  .background;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="tab-button">
-    <SvgIcon :name="props.icon"></SvgIcon>
-    <div class="button-text">{{ props.text }}</div>
+    <SvgIcon :name="icon"></SvgIcon>
+    <div class="button-text">{{ text }}</div>
   </div>
 </template>
 

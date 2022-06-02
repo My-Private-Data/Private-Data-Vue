@@ -7,6 +7,15 @@ const defaultState = {
 
 export default createStore({
   state() {
+    // 第一次进入时就判断系统显示模式
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      defaultState.displayMode = 'dark-mode'
+    } else {
+      defaultState.displayMode = 'light-mode'
+    }
+    const app = document.getElementById('app')
+    app.classList.add(defaultState.displayMode)
+
     return defaultState
   },
   mutations: {

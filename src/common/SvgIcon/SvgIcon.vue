@@ -1,6 +1,6 @@
 <template>
   <svg aria-hidden="true">
-    <use :href="symbolId" :fill="color" />
+    <use :href="symbolId" />
   </svg>
 </template>
 
@@ -21,10 +21,6 @@ const props = defineProps({
   name: {
     type: String,
     required: true,
-  },
-  color: {
-    type: String,
-    default: '#333',
   },
 })
 

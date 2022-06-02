@@ -1,0 +1,14 @@
+@import 'transition';
+
+.hsl-color(@color) when (iscolor(@color)) {
+  @return-color: hsl(hue(@color), saturation(@color), lightness(@color));
+}
+
+.background(@color: var(--web-background), @hover-color: @color) {
+  background-color: @color;
+  .background-transition;
+
+  &:hover {
+    background-color: @hover-color;
+  }
+}

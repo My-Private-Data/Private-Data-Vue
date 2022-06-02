@@ -1,13 +1,12 @@
 <template>
-  <div class="tab-button">
-    <SvgIcon :name="icon"></SvgIcon>
-    <div class="button-text">{{ text }}</div>
+  <div class="switch">
+    <div class="button-text">{{ props.text }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'TabButton',
+  name: 'Switch',
 })
 
 const props = defineProps({
@@ -22,4 +21,4 @@ const props = defineProps({
 })
 </script>
 
-<style src="./TabButton.less" lang="less" scoped></style>
+<style src="./Switch.less" lang="less" scoped></style>

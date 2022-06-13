@@ -9,8 +9,8 @@
 import { reactive } from 'vue'
 import TabButton from '@/common/TabButton/TabButton.vue'
 import SegmentedPicker from '@/common/SegmentedPicker/SegmentedPicker.vue'
+import Affix from '@/common/Affix/affix.vue'
 
-// eslint-disable-next-line no-undef
 defineOptions({
   name: 'SideBar',
 })

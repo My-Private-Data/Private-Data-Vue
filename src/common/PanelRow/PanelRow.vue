@@ -18,8 +18,8 @@
 
 <script lang="ts" setup>
 import { computed, CSSProperties } from 'vue'
-import { addUnit } from '@/util/style'
-import Switch from '@/common/Switch/Switch.vue'
+import { addUnit } from '@/util/dom/style'
+import Switch from '@/common/Switch/switch.vue'
 
 defineOptions({
   name: 'PanelRow',

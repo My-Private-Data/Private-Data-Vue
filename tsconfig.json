@@ -5,9 +5,9 @@
       "dom"
     ],
     "target": "esnext",
+    "module": "esnext",
     "outDir": "lib",
     "declaration": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"

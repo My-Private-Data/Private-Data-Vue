@@ -1,5 +1,6 @@
 <template>
   <div class="nav-bar">
+    <Affix position="bottom">123123</Affix>
     <ThemePicker></ThemePicker>
   </div>
 </template>

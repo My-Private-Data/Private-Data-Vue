@@ -23,50 +23,17 @@
 
 <script lang="ts" setup>
 import { computed, CSSProperties, nextTick, onMounted, ref, useAttrs, watch } from 'vue'
-import { addUnit } from '@/util/style'
+import { addUnit } from '@/util/dom/style'
+import { switchEmits, switchProps } from '@/common/Switch/switch'
 
 defineOptions({
   name: 'Switch',
 })
-type CheckedType = boolean | string | number
+const props = defineProps(switchProps)
+const emits = defineEmits(switchEmits)
 const attrs = useAttrs()
-const props = defineProps({
-  /** 是否禁用组件 */
-  disabled: {
-    type: Boolean,
-    default: undefined,
-  },
-  /** 是否处于加载中状态 */
-  loading: {
-    type: Boolean,
-    default: undefined,
-  },
-  /** 组件大小，背景长:背景宽:背景圆角 = 51:31:27 */
-  size: {
-    type: Number,
-    default: 51,
-  },
-  colorTheme: {
-    type: String,
-    default: 'green-theme',
-  },
-  /** 是否一直处于激活状态 */
-  checked: {
-    type: [String, Number, Boolean],
-    default: undefined,
-  },
-  /** 自定义开关值，默认为 [true, false]。也可以是：[1, 0] 和 [`是`, `否`] */
-  checkedValue: {
-    type: [String, Number, Boolean],
-    default: true,
-  },
-  /** 自定义开关值 */
-  unCheckedValue: {
-    type: [String, Number, Boolean],
-    default: false,
-  },
-})
-const emits = defineEmits(['update:checked', 'change', 'blur', 'click', 'mouseup'])
+
+type CheckedType = boolean | string | number
 
 const refSwitchNode = ref()
 const checked = ref<CheckedType>(props.checked !== undefined ? props.checked : (attrs.defaultChecked as boolean))
@@ -94,13 +61,8 @@ const toggleStyle = computed<CSSProperties>(() => ({
   borderRadius: addUnit(props.size),
 }))
 
-const focus = () => {
-  refSwitchNode.value?.focus()
-}
-
-const blur = () => {
-  refSwitchNode.value?.blur()
-}
+const focus = () => refSwitchNode.value?.focus()
+const blur = () => refSwitchNode.value?.blur()
 
 const setCheckedStatus = (newCheckedStatus: CheckedType, e: MouseEvent | KeyboardEvent) => {
   if (props.disabled || props.loading) {
@@ -110,9 +72,7 @@ const setCheckedStatus = (newCheckedStatus: CheckedType, e: MouseEvent | Keyboar
   emits('update:checked', newCheckedStatus)
 }
 
-const handleBlur = (e: FocusEvent) => {
-  emits('blur', e)
-}
+const handleBlur = (e: FocusEvent) => emits('blur', e)
 
 const handleClick = (e: MouseEvent) => {
   focus()
@@ -133,7 +93,6 @@ onMounted(() => {
     }
   })
 })
-
 /** 指定暴露的属性，才可以在父组件拿到 */
 defineExpose({
   focus,
@@ -141,4 +100,4 @@ defineExpose({
 })
 </script>
 
-<style src="./Switch.less" lang="less" scoped></style>
+<style src="./switch.less" lang="less" scoped></style>

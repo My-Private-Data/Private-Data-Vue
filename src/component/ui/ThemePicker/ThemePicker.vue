@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
-import Switch from '@/common/Switch/Switch.vue'
+import Switch from '@/common/Switch/switch.vue'
 import PanelRow from '@/common/PanelRow/PanelRow.vue'
 
 defineOptions({

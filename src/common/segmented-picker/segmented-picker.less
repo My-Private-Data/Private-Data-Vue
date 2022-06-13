@@ -1,0 +1,36 @@
+@import 'src/style/function';
+
+.segmented-picker {
+  .segmented-picker-background {
+    .background(var(--fill-tertiary));
+    .flex-space-between;
+    // 防止 segment 阴影外溢
+    overflow: hidden;
+
+    .segment {
+      .flex-diagonal-center;
+      color: var(--label-primary);
+      cursor: pointer;
+      // 伪类对应元素必须是 absolute 或 relative，伪类定位才会生效，不然一直向父级元素查找，直到有定位为止
+      position: relative;
+      // 这个分割线在内部，通过 border 实现更合适
+      // 除了第一个元素，都通过伪类加上这个左边框
+      &:not(:nth-of-type(1))::after {
+        // auto 居中
+        .absolute-position(auto, 0);
+        .size(1px, 60%);
+        content: '';
+        .background(var(--separator-color));
+      }
+
+      &:hover, &.selected {
+        .background(var(--segment-color));
+        box-shadow: var(--button-shadow-primary);
+
+        &::after {
+          background: none;
+        }
+      }
+    }
+  }
+}

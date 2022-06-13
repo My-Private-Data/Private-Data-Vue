@@ -1,0 +1,51 @@
+@import 'src/style/function';
+
+.panel-row {
+  // 伪类对应元素必须是 absolute 或 relative，伪类定位才会生效，不然一直向父级元素查找，直到有定位为止
+  position: relative;
+  overflow: hidden;
+  // 第一个加上上边框圆角
+  &:first-of-type {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  // 最后一个加上下边框圆角
+  &:last-of-type {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+
+  // 除了最后一个都要边框
+  &:not(:last-of-type)::after {
+    .absolute-position(calc(100% - 1px), 10%);
+    .size(100%, 1px);
+    content: '';
+    background-color: var(--separator-color-transparency);
+  }
+
+  .panel-row-background {
+    .flex-space-between;
+    .background(var(--background-primary), var(--background-secondary));
+
+    .panel-row-icon {
+      .full-height(10%);
+      .flex-diagonal-center;
+      color: var(--label-secondary);
+    }
+
+    .panel-row-content {
+      .full-height(90%);
+      .flex-space-between;
+      color: var(--label-primary);
+      padding-right: 3%;
+
+      .panel-row-title {
+        .flex-vertical-center;
+      }
+
+      .panel-row-action {
+        .flex-vertical-center;
+      }
+    }
+  }
+}

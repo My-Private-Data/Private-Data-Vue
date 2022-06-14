@@ -1,14 +1,15 @@
 @import 'src/style/function';
 
+@border-padding-percent: 0%;
+
 .panel-row {
-  // 伪类对应元素必须是 absolute 或 relative，伪类定位才会生效，不然一直向父级元素查找，直到有定位为止
-  position: relative;
   overflow: hidden;
   // 第一个加上上边框圆角
   &:first-of-type {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
+
   // 最后一个加上下边框圆角
   &:last-of-type {
     border-bottom-left-radius: 1rem;
@@ -16,35 +17,62 @@
   }
 
   // 除了最后一个都要边框
-  &:not(:last-of-type)::after {
-    .absolute-position(calc(100% - 1px), 10%);
-    .size(100%, 1px);
-    content: '';
-    background-color: var(--separator-color-transparency);
+  &:not(:last-of-type) {
+    .panel-row-background {
+      .panel-row-content {
+        // 伪类对应元素必须是 absolute 或 relative，伪类定位才会生效，不然一直向父级元素查找，直到有定位为止
+        position: relative;
+      }
+
+      .panel-row-content::after {
+        .absolute-position(calc(100% - 1px), 0);
+        .size(100%, 1px);
+        .button-transition;
+        content: '';
+        background-color: var(--separator-color-transparency);
+      }
+    }
   }
 
   .panel-row-background {
     .flex-space-between;
     .background(var(--background-primary), var(--background-secondary));
 
+    &:hover {
+      .panel-row-content::after {
+        background: none;
+      }
+    }
+
     .panel-row-icon {
-      .full-height(10%);
+      // 宽度由子元素撑开
+      .full-height(auto);
+      // 没有子元素时，最小宽度为 5%
+      min-width: 5%;
       .flex-diagonal-center;
-      color: var(--label-secondary);
     }
 
     .panel-row-content {
-      .full-height(90%);
+      .full-height(100% - @border-padding-percent);
       .flex-space-between;
-      color: var(--label-primary);
       padding-right: 3%;
+      color: var(--label-primary);
 
       .panel-row-title {
+        .full-height(60%);
         .flex-vertical-center;
       }
 
       .panel-row-action {
         .flex-vertical-center;
+        color: var(--label-secondary);
+
+        .arrow-forward-icon {
+          .size(1.5rem);
+          margin-left: 0.5rem;
+          .flex-diagonal-center;
+          color: var(--label-tertiary);
+        }
       }
     }
   }

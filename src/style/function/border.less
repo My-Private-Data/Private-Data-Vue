@@ -1,5 +1,6 @@
 @import 'src/style/variable';
 
+@border-color: var(--border-color);
 .default-border(@color: @border-color) when (iscolor(@color)) {
   border: @default-border-width solid @color;
 }

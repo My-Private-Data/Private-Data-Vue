@@ -2,23 +2,36 @@
   <div class="theme-picker">
     <PanelRow :width="400" :height="50" :title="'深色模式'">
       <template #prefix>
-        <SvgIcon :name="'info-circle'"></SvgIcon>
+        <div class="panel-row-icon-area">
+          <SvgIcon class="ios-moon-icon" name="ios-moon"></SvgIcon>
+        </div>
       </template>
       <template #action>
         <Switch v-model:checked="isDark">
-          <template #switch-inner>
-            <SvgIcon v-if="isDark" :name="'prev'"></SvgIcon>
-            <SvgIcon v-else :name="'next'"></SvgIcon>
-          </template>
+          <!--          <template #switch-inner>-->
+          <!--            <SvgIcon v-if="isDark" :name="'prev'"></SvgIcon>-->
+          <!--            <SvgIcon v-else :name="'next'"></SvgIcon>-->
+          <!--          </template>-->
         </Switch>
       </template>
     </PanelRow>
     <PanelRow :width="400" :height="50" :title="'无边框模式'">
       <template #prefix>
-        <SvgIcon :name="'info-circle'"></SvgIcon>
+        <div class="panel-row-icon-area">
+          <SvgIcon class="ios-cog-icon" name="ios-cog"></SvgIcon>
+        </div>
       </template>
       <template #action>
         <Switch v-model:checked="isPure"></Switch>
+      </template>
+    </PanelRow>
+    <PanelRow :width="400" :height="50" :title="'无边框模式'"></PanelRow>
+    <PanelRow :width="400" :height="50" :title="'无边框模式'">
+      <template #label> 510_5G </template>
+      <template #prefix>
+        <div class="panel-row-icon-area">
+          <SvgIcon class="ios-notification-icon" name="ios-notification"></SvgIcon>
+        </div>
       </template>
     </PanelRow>
   </div>

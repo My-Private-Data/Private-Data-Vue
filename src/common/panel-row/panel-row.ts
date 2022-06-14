@@ -1,8 +1,4 @@
 export const panelRowProps = {
-  icon: {
-    type: String,
-    default: 'info-circle',
-  },
   title: {
     type: String,
     default: 'title',

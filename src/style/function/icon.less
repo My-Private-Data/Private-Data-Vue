@@ -1,0 +1,14 @@
+@import 'align';
+@import 'color';
+@import 'size';
+@import 'transition';
+
+@icon-background-color: var(--icon-blue);
+
+.panel-row-icon(@background-color: @icon-background-color) {
+  .size(2rem, 2rem, 0.5rem);
+  .flex-diagonal-center;
+  padding: 0.1rem;
+  .background(@background-color);
+  color: var(--system-white);
+}

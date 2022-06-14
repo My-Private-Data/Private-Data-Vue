@@ -9,7 +9,10 @@
           {{ title }}
         </div>
         <div class="panel-row-action">
-          <slot name="action" />
+          <slot name="label"> </slot>
+          <slot name="action">
+            <SvgIcon class="arrow-forward-icon" name="ios-arrow-forward"></SvgIcon>
+          </slot>
         </div>
       </div>
     </div>

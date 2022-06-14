@@ -3,4 +3,22 @@
 .theme-picker {
   .flex-vertical-list;
 
+  .panel-row-icon-area {
+    .full-height(4rem);
+    .flex-diagonal-center;
+
+    .svg-icon {
+      &.ios-moon-icon {
+        .panel-row-icon(var(--icon-purple));
+      }
+
+      &.ios-cog-icon {
+        .panel-row-icon(var(--icon-grey));
+      }
+
+      &.ios-notification-icon {
+        .panel-row-icon(var(--icon-red));
+      }
+    }
+  }
 }

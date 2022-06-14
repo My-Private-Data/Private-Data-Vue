@@ -5,7 +5,7 @@
     </NavBar>
     <MainContent>
       <SideBar>
-        <TabButton v-for="(app, i) in state.apps" :key="i" :icon="app.icon" :text="app.title"></TabButton>
+        <Button v-for="(app, i) in state.apps" :key="i" :icon-name="app.icon" :title="app.title"></Button>
         <SegmentedPicker :option-list="['On', 'Off', 'On', 'Off']"></SegmentedPicker>
       </SideBar>
       <router-view />
@@ -19,7 +19,7 @@ import NavBar from '@/component/ui/nav-bar/nav-bar.vue'
 import SideBar from '@/component/ui/side-bar/side-bar.vue'
 import MainContent from '@/component/ui/main-content/main-content.vue'
 import ThemePicker from '@/component/ui/theme-picker/theme-picker.vue'
-import TabButton from '@/common/button/button.vue'
+import Button from '@/common/button/button.vue'
 import SegmentedPicker from '@/common/segmented-picker/segmented-picker.vue'
 
 const state = reactive({

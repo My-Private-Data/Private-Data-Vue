@@ -1,4 +1,4 @@
-export const buttonProps = {
+export const tagProps = {
   iconName: {
     type: String,
     default: 'info-circle',
@@ -6,9 +6,5 @@ export const buttonProps = {
   title: {
     type: String,
     default: 'button',
-  },
-  size: {
-    type: Number,
-    default: 144,
   },
 }

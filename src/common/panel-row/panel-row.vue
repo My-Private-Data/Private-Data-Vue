@@ -1,14 +1,14 @@
 <template>
   <div class="panel-row">
     <div class="panel-row-background" :style="panelRowStyle">
-      <div class="panel-row-icon">
+      <div class="panel-row-icon-area">
         <slot name="prefix" />
       </div>
-      <div class="panel-row-content">
-        <div class="panel-row-title">
+      <div class="panel-row-content-area">
+        <div class="panel-row-title-area">
           {{ title }}
         </div>
-        <div class="panel-row-action">
+        <div class="panel-row-action-area">
           <slot name="label"> </slot>
           <slot name="action">
             <SvgIcon class="arrow-forward-icon" name="ios-arrow-forward"></SvgIcon>

@@ -1,0 +1,19 @@
+@import 'src/style/function';
+
+.button {
+  .size(10rem, 2.5rem, 1rem);
+  .flex-diagonal-center;
+  .button-transition;
+  .background(var(--tag-background-blue));
+  cursor: pointer;
+
+  .tag-title {
+    width: 3rem;
+    color: var(--tag-title-blue);
+    .ellipsis-line;
+  }
+
+  &:hover {
+    background: var(--grey3);
+  }
+}

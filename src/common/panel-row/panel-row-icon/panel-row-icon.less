@@ -1,0 +1,22 @@
+@import 'src/style/function';
+
+@theme-postfix: -panel-row-icon;
+
+.panel-row-icon {
+  .full-height(4rem);
+  .flex-diagonal-center;
+
+  .svg-icon {
+    &.purple@{theme-postfix} {
+      .panel-row-icon(var(--icon-purple));
+    }
+
+    &.grey@{theme-postfix} {
+      .panel-row-icon(var(--icon-grey));
+    }
+
+    &.red@{theme-postfix} {
+      .panel-row-icon(var(--icon-red));
+    }
+  }
+}

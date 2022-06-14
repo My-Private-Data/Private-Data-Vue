@@ -1,10 +1,24 @@
 @import 'src/style/function';
 
 .button {
+  .flex-diagonal-center;
   .button-transition;
-  border-radius: 2rem;
+  .background(var(--system-blue), var(--tag-title-blue));
+  cursor: pointer;
 
-  &:hover {
-    background: var(--grey3);
+  .button-icon-area {
+    .full-height(3rem);
+    .flex-vertical-center;
+
+    .svg-icon {
+      .size(1.5rem);
+      color: var(--system-white);
+    }
+  }
+
+  .button-title {
+    width: 3rem;
+    color: var(--system-white);
+    .ellipsis-line;
   }
 }

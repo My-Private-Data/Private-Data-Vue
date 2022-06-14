@@ -2,9 +2,7 @@
   <div class="theme-picker">
     <PanelRow :width="400" :height="50" :title="'深色模式'">
       <template #prefix>
-        <div class="panel-row-icon-area">
-          <SvgIcon class="ios-moon-icon" name="ios-moon"></SvgIcon>
-        </div>
+        <PanelRowIcon icon-name="ios-moon" theme="purple"></PanelRowIcon>
       </template>
       <template #action>
         <Switch v-model:checked="isDark">
@@ -17,9 +15,7 @@
     </PanelRow>
     <PanelRow :width="400" :height="50" :title="'无边框模式'">
       <template #prefix>
-        <div class="panel-row-icon-area">
-          <SvgIcon class="ios-cog-icon" name="ios-cog"></SvgIcon>
-        </div>
+        <PanelRowIcon></PanelRowIcon>
       </template>
       <template #action>
         <Switch v-model:checked="isPure"></Switch>
@@ -27,11 +23,9 @@
     </PanelRow>
     <PanelRow :width="400" :height="50" :title="'无边框模式'"></PanelRow>
     <PanelRow :width="400" :height="50" :title="'无边框模式'">
-      <template #label> 510_5G </template>
+      <template #label> 510_5G</template>
       <template #prefix>
-        <div class="panel-row-icon-area">
-          <SvgIcon class="ios-notification-icon" name="ios-notification"></SvgIcon>
-        </div>
+        <PanelRowIcon icon-name="ios-notification" theme="red"></PanelRowIcon>
       </template>
     </PanelRow>
   </div>
@@ -42,9 +36,10 @@ import { onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import Switch from '@/common/switch/switch.vue'
 import PanelRow from '@/common/panel-row/panel-row.vue'
+import PanelRowIcon from '@/common/panel-row/panel-row-icon/panel-row-icon.vue'
 
 defineOptions({
-  name: 'theme-picker',
+  name: 'ThemePicker',
 })
 
 const store = useStore()

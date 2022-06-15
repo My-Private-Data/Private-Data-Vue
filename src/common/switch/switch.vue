@@ -12,7 +12,7 @@
       @mouseup="handleMouseUp"
     >
       <div class="switch-toggle" :style="toggleStyle">
-        <div v-if="loading" class="'loading-icon'"></div>
+        <Loading v-if="loading"></Loading>
       </div>
       <div :class="['switch-inner', { checked: checkedStatus }]">
         <slot name="switch-inner" />
@@ -25,6 +25,7 @@
 import { computed, CSSProperties, nextTick, onMounted, ref, useAttrs, watch } from 'vue'
 import { addUnit } from '@/util/dom/style'
 import { switchEmits, switchProps } from '@/common/switch/switch'
+import Loading from '@/common/loading/loading.vue'
 
 defineOptions({
   name: 'Switch',

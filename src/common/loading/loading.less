@@ -1,0 +1,44 @@
+@import 'src/style/function';
+
+// 背景色切换的延迟
+@size: 1.5px;
+@duration: 800;
+// 离中心点的位置
+@transformOriginY: 170%;
+
+.loop(@i) when (@i <= 12) {
+  .loading-petal:nth-of-type(@{i}) {
+    transform: rotate(30deg * @i);
+    // 一定要括号
+    animation-delay: (@i * @duration / 12) * 1ms;
+  }
+
+  .loop((@i + 1))
+}
+
+@-webkit-keyframes petal {
+  0% {
+    background-color: var(--system-white);
+  }
+
+  100% {
+    background-color: #808080;
+  }
+}
+
+.loading {
+  .full-size;
+  .flex-diagonal-center;
+  .loop(1);
+
+  .loading-petal {
+    .background-transition;
+    position: absolute;
+    // 2:7:5
+    .size(2 * @size, 7 * @size, 5 * @size);
+    background-color: rgba(234, 234, 234, .3);
+    margin-top: -5%;
+    -webkit-transform-origin-y: @transformOriginY;
+    animation: petal 1ms * @duration linear infinite;
+  }
+}

@@ -18,7 +18,7 @@
         <PanelRowIcon></PanelRowIcon>
       </template>
       <template #action>
-        <Switch v-model:checked="isPure"></Switch>
+        <Switch v-model:checked="isPure" loading></Switch>
       </template>
     </PanelRow>
     <PanelRow :width="400" :height="50" :title="'无边框模式'"></PanelRow>

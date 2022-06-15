@@ -1,11 +1,13 @@
 @import 'src/style/function';
 
-// 背景色切换的延迟
+// 花瓣的尺寸
 @size: 1.5px;
+// 背景色切换的延迟
 @duration: 800;
 // 离中心点的位置
 @transformOriginY: 170%;
 
+// 依次变白，按序号带有延迟
 .loop(@i) when (@i <= 12) {
   .loading-petal:nth-of-type(@{i}) {
     transform: rotate(30deg * @i);
@@ -22,7 +24,7 @@
   }
 
   100% {
-    background-color: #808080;
+    background-color: var(--icon-grey);
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="trade-list">todo</div>
+  <div class="trade-list">{{ tradeList }}</div>
 </template>
 
 <script lang="ts" setup>

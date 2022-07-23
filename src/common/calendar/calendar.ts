@@ -1,6 +1,6 @@
 export const calendarProps = {
-  selectDateMap: {
-    type: Map,
-    default: new Map(),
+  selectDateList: {
+    type: Array,
+    default: [],
   },
 }

@@ -26,7 +26,7 @@
             <CalendarCell
               :cell="cell"
               :class="[
-                selectDateMap.has(cell.cellDate) ? `selected` : '',
+                selectDateList.includes(cell.cellDate) ? `selected` : '',
                 cell.cellStatus === 'disabled' ? `disabled` : '',
               ]"
             ></CalendarCell>
@@ -38,12 +38,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, CSSProperties, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { calendarProps } from '@/common/calendar/calendar'
 import CalendarCell from './calendar-cell/calendar-cell.vue'
 import { LedgerQueryApi } from '@/api'
-import { CalendarAmountCell, StatusCode, PageQuery } from '@/model'
-import { addUnit } from '@/util'
+import { CalendarAmountCell, StatusCode } from '@/model'
 
 defineOptions({
   name: 'calendar',

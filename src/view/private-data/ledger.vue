@@ -21,6 +21,7 @@ const handleSelectDateChange = (cellDate: Date) => {
       selectDateMap.value.set(cellDate, res.data.data)
     })
   }
+  console.info(selectDateMap.value)
 }
 const handleMonthChange = () => {
   selectDateMap.value.clear()
@@ -31,11 +32,11 @@ const handleMonthChange = () => {
   <div class="ledger">
     <span>ledger：账单，只包含收支记录，不包含全部的交易记录（如转账、存取等）</span>
     <Calendar
-      :select-date-map="selectDateMap"
+      :select-date-list="Array.from(selectDateMap.keys())"
       @selectDateChange="handleSelectDateChange"
       @monthChange="handleMonthChange"
     ></Calendar>
-    <TradeList></TradeList>
+    <TradeList :trade-list="Array.from(selectDateMap.values())"></TradeList>
   </div>
 </template>
 

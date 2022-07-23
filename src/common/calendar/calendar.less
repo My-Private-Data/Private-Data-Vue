@@ -1,0 +1,75 @@
+@import 'src/style/function';
+
+@cell-length: calc(100% / 7);
+
+.calendar {
+  .size(35rem);
+  .flex-diagonal-center;
+  color: var(--label-primary);
+
+  .calendar-background {
+    .full-size;
+    .flex-vertical-list;
+    background-color: var(--background-primary);
+    border-radius: 1rem;
+
+    .calendar-header {
+      .full-width(10%);
+      .flex-space-between;
+
+      .calendar-year-month {
+        .full-height(80%);
+        .flex-diagonal-center;
+        .font(1rem, 800);
+        .default-font(1.2rem);
+      }
+
+      .calendar-prev-button, .calendar-next-button {
+        .full-height(10%);
+        .flex-diagonal-center;
+        .default-button;
+        .size(3rem, 3rem, 50%);
+        box-shadow: var(--button-shadow-secondary);
+
+        &:hover {
+          background-color: var(--system-grey6);
+
+          .svg-icon {
+            color: var(--label-secondary);
+          }
+        }
+
+        .svg-icon {
+          .size(1.2rem);
+          color: var(--label-tertiary);
+        }
+      }
+    }
+
+    .calender-body {
+      .full-width(90%);
+      .flex-vertical-list;
+
+      .calender-body-header {
+        .full-width(10%);
+        .flex-space-between;
+        .font(1.2rem, @default-font-weight, var(--label-secondary));
+
+        .calender-body-header-word {
+          .size(@cell-length);
+          .flex-diagonal-center;
+        }
+      }
+
+      .calender-body-table {
+        .full-width(90%);
+        .flex-horizontal-list;
+
+        .calender-body-table-cell-background {
+          .size(@cell-length);
+          .flex-diagonal-center;
+        }
+      }
+    }
+  }
+}

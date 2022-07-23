@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     // custom rule
     'no-undef': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'max-classes-per-file': ['error', 2],
     // common rule
     'no-console': [
       'error',

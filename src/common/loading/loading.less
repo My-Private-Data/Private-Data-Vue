@@ -5,14 +5,16 @@
 // 背景色切换的延迟
 @duration: 800;
 // 离中心点的位置
-@transformOriginY: 170%;
+@transform-origin-y: 170%;
+// 花瓣数量
+@petal-number: 12;
 
 // 依次变白，按序号带有延迟
-.loop(@i) when (@i <= 12) {
+.loop(@i) when (@i <= @petal-number) {
   .loading-petal:nth-of-type(@{i}) {
-    transform: rotate(30deg * @i);
+    transform: rotate((360deg / @petal-number) * @i);
     // 一定要括号
-    animation-delay: (@i * @duration / 12) * 1ms;
+    animation-delay: (@i * @duration / @petal-number) * 1ms;
   }
 
   .loop((@i + 1))
@@ -40,7 +42,7 @@
     .size(2 * @size, 7 * @size, 5 * @size);
     background-color: rgba(234, 234, 234, .3);
     margin-top: -5%;
-    -webkit-transform-origin-y: @transformOriginY;
+    -webkit-transform-origin-y: @transform-origin-y;
     animation: petal 1ms * @duration linear infinite;
   }
 }

@@ -1,9 +1,14 @@
 @import 'src/style/variable';
+@import 'src/style/function';
+
+@default-font-size: 1rem;
+@default-font-color: var(--label-primary);
 
 .default-font(@font-size: @default-font-size) when (isnumber(@font-size)) {
   font-size: @font-size;
   font-weight: @default-font-weight;
-  color: @text-color;
+  color: @default-font-color;
+  .label-transition;
 }
 
 .default-font(@font-color: @text-color) when (iscolor(@font-color)) {
@@ -15,7 +20,7 @@
 .font(@font-size, @font-weight) when (isnumber(@font-size)) and (isnumber(@font-weight)) {
   font-size: @font-size;
   font-weight: @font-weight;
-  color: @text-color;
+  color: @default-font-color;
 }
 
 .font(@font-size, @font-color) when (isnumber(@font-size)) and (iscolor(@font-color))  {

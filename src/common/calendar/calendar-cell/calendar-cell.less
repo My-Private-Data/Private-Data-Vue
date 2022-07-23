@@ -1,0 +1,51 @@
+@import 'src/style/function';
+
+.calendar-cell {
+  .size(3.5rem, 3.5rem, 0.8rem);
+  .flex-vertical-list;
+  align-content: center;
+  .background(var(--background-primary), var(--background-secondary));
+  cursor: pointer;
+
+
+  &.selected {
+    .background(var(--system-blue), var(--tag-title-blue));
+
+    .calender-cell-date {
+      // 点击的时候不要延迟
+      transition-duration: 0s;
+      color: var(--system-white);
+    }
+
+    .calender-cell-amount {
+      color: rgba(255, 255, 255, .8);
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      background: none;
+    }
+
+    .calender-cell-date {
+      color: var(--label-quaternary);
+    }
+  }
+
+  .calender-cell-date {
+    .default-font(1.5rem);
+    .flex-diagonal-center;
+    .full-width(2rem);
+  }
+
+  .calender-cell-amount {
+    .font(0.8rem, @default-font-weight, var(--label-tertiary));
+    .ellipsis-line;
+    .full-width(auto);
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: center;
+  }
+}

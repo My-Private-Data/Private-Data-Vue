@@ -17,16 +17,15 @@ export default () => {
       port: 3000, // 服务启动端口号
       open: true, // 服务启动时是否自动打开浏览器
       cors: true, // 允许跨域
-
       // 代理设置
-      // proxy: {
-      //   '/api': {
-      //     target: 'http://xxx.xxx.xxx.xxx:8000',
-      //     changeOrigin: true,
-      //     secure: false,
-      //     rewrite: (path) => path.replace('/api/', '/')
-      //   }
-      // }
+      proxy: {
+        '/api': {
+          target: 'http://127.0.0.1:9999',
+          changeOrigin: true,
+          secure: false,
+          // rewrite: (path) => path.replace('/api/', '/'),
+        },
+      },
     },
   }
 }

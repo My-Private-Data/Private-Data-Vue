@@ -1,7 +1,11 @@
 export const panelRowProps = {
   title: {
     type: String,
-    default: 'title',
+    default: null,
+  },
+  link: {
+    type: String,
+    default: '#',
   },
   width: {
     type: Number,

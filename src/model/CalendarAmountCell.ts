@@ -11,16 +11,26 @@ export class CalendarAmountCell {
   /** 状态 */
   cellStatus: CalendarCellStatusEnum
 
-  /** 金额 */
-  cellAmount?: number
+  /** 当日总支出 */
+  sumIncome?: number
+
+  /** 当日总消费 */
+  sumExpenditure?: number
 
   /** 金额在本月区间中的百分比 */
   cellPercent?: number
 
-  constructor(cellDate: Date, cellStatus: CalendarCellStatusEnum, cellAmount?: number, cellPercent?: number) {
+  constructor(
+    cellDate: Date,
+    cellStatus: CalendarCellStatusEnum,
+    sumIncome?: number,
+    sumExpenditure?: number,
+    cellPercent?: number,
+  ) {
     this.cellDate = cellDate
     this.cellStatus = cellStatus
-    this.cellAmount = cellAmount
-    this.cellPercent = cellPercent
+    this.sumIncome = sumIncome || 0
+    this.sumExpenditure = sumExpenditure || 0
+    this.cellPercent = cellPercent || 0
   }
 }

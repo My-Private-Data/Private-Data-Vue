@@ -1,32 +1,34 @@
 @import 'align';
 @import 'color';
+@import 'font';
 @import 'size';
 @import 'transition';
 
 @button-size: 36px;
-@button-label-color: var(--label-primary);
+
 @button-background-color: var(--background-primary);
-@button-hover-color: var(--system-grey4);
-@button-active-color: var(--system-blue);
-@button-active-label-color: var(--system-white);
+@button-label-color: var(--system-grey4);
+@button-hover-background-color: var(--system-grey6);
+@button-hover-label-color: var(--system-grey2);
 
 // button 应有的样式
-.default-button(@width: @button-size, @background-color: @button-background-color) {
+.default-button(@width: @button-size, @background-color: @button-background-color, @label-color: @button-label-color) {
   @ratio: 0.618;
   .size(@width, @ratio * @width);
   .flex-diagonal-center;
-  .button-transition;
+  .background-transition;
+  background-color: @background-color;
+  color: @label-color;
   cursor: pointer;
-  background-color: @button-background-color;
-  color: @button-label-color;
 
   &:hover {
-    background-color: @button-hover-color;
+    background-color: @button-hover-background-color;
+    color: @button-hover-label-color;
   }
 
   &.is-active {
-    background-color: @button-active-color;
-    color: @button-active-label-color;
+    background-color: @button-hover-background-color;
+    color: @button-hover-label-color;
   }
 }
 
@@ -49,4 +51,26 @@
   @radius-ratio: 0.05;
   .size(@width, @height, @radius-ratio * @width);
   box-shadow: var(--card-shadow-secondary);
+}
+
+.blue-button {
+  .default-button;
+  background-color: var(--tag-background-blue);
+  color: var(--tag-label-blue);
+
+  &:hover {
+    background-color: var(--system-blue);
+    color: var(--system-white);
+  }
+}
+
+.green-button {
+  .default-button;
+  background-color: var(--tag-background-green);
+  color: var(--tag-label-green);
+
+  &:hover {
+    background-color: var(--system-green);
+    color: var(--system-white);
+  }
 }

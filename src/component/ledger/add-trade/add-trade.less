@@ -1,0 +1,154 @@
+@import 'src/style/function';
+
+@cell-length: calc(100% / 5);
+
+.add-trade {
+  .full-size;
+  box-shadow: var(--card-shadow-secondary);
+
+  .nav-bar {
+    .full-width(12rem);
+    .flex-vertical-list;
+
+    .segmented-picker {
+      .full-width(4rem);
+      .flex-diagonal-center;
+    }
+
+    .add-trade-amount {
+      .full-width(8rem);
+      .flex-diagonal-center;
+      // 配合 add-trade-amount-unit 使用
+      position: relative;
+
+      input {
+        .size(6rem, 4rem);
+        margin-right: 1rem;
+        .font(2rem, 200, var(--label-secondary));
+        .label-transition;
+        border-bottom: 1px solid var(--label-quaternary);
+
+        &:focus {
+          .font(2rem, 200, var(--label-primary));
+          border-bottom: 1px solid var(--label-secondary);
+        }
+      }
+
+      .add-trade-amount-unit {
+        position: absolute;
+        right: 5%;
+        .font(2rem, 200, var(--label-quaternary));
+      }
+    }
+  }
+
+  .main-content {
+    .full-width(auto);
+    .flex-vertical-list;
+
+    .add-trade-category-list {
+      .full-width(15rem);
+      .flex-horizontal-list;
+
+      .add-trade-category-cell {
+        .background(transparent, var(--background-primary));
+        .size(@cell-length, 6rem, 1rem);
+        .flex-vertical-list;
+        .flex-vertical-center;
+        cursor: pointer;
+
+        .add-trade-category-icon-content {
+          .full-width(70%);
+          .flex-diagonal-center;
+          // TODO fix duplicate line
+          .add-trade-category-icon {
+            .size(3rem, 3rem, 50%);
+            background-color: var(--system-blue);
+            .flex-diagonal-center;
+
+            .svg-icon {
+              .size(1.5rem);
+              overflow: hidden;
+              color: var(--system-white);
+            }
+
+            .trade-detail-icon;
+          }
+        }
+
+
+        .add-trade-category-name {
+          .full-width(30%);
+          .flex-horizontal-center;
+          .flex-vertical-start;
+          color: var(--label-primary);
+        }
+
+
+        &.unchecked {
+          .add-trade-category-icon-content {
+            .add-trade-category-icon {
+              background-color: var(--system-grey3);
+            }
+          }
+
+          .add-trade-category-name {
+            color: var(--label-secondary);
+          }
+        }
+
+        &.selected {
+          background-color: var(--background-primary);
+        }
+      }
+    }
+
+    .trade-description {
+      .full-width(auto);
+      .flex-vertical-list;
+      .font(1.5rem, 200, var(--label-secondary));
+
+      .trade-description-line {
+        .full-width(4rem);
+        .flex-vertical-center;
+        .flex-horizontal-start;
+        padding-left: 1rem;
+
+        input {
+          .font(1.5rem, 200, var(--label-secondary));
+          .label-transition;
+          border-bottom: 1px solid var(--label-quaternary);
+
+          &:focus {
+            .font(1.5rem, 200, var(--label-primary));
+            border-bottom: 1px solid var(--label-secondary);
+          }
+        }
+      }
+    }
+
+    .date-input {
+      .full-width(3rem);
+      .flex-diagonal-center;
+      .font(1.5rem, 200, var(--label-secondary));
+
+      input {
+        .full-height(5rem);
+        .font(1.5rem, 200, var(--label-secondary));
+        .label-transition;
+        border-bottom: 1px solid var(--label-quaternary);
+        text-align: center;
+
+        &:focus {
+          .font(1.5rem, 200, var(--label-primary));
+          border-bottom: 1px solid var(--label-secondary);
+        }
+      }
+    }
+
+    .action-area {
+      .full-width(5rem);
+      .flex-diagonal-center;
+    }
+  }
+}

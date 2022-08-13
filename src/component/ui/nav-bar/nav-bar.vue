@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'nav-bar',
+  name: 'NavBar',
 })
 </script>
 

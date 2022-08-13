@@ -1,14 +1,34 @@
 export const buttonProps = {
+  theme: {
+    type: String,
+    default: 'default',
+  },
   iconName: {
     type: String,
-    default: 'info-circle',
+    default: null,
   },
-  title: {
+  label: {
     type: String,
-    default: 'button',
+    default: null,
+  },
+  link: {
+    type: String,
+    default: null,
   },
   size: {
     type: Number,
-    default: 144,
+    default: null,
+  },
+  width: {
+    type: Number,
+    default: null,
+  },
+  height: {
+    type: Number,
+    default: null,
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
   },
 }

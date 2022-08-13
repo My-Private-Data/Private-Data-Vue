@@ -1,7 +1,7 @@
 <template>
   <div class="calendar">
     <div class="calendar-background">
-      <div class="calendar-header">
+      <Header>
         <div class="calendar-prev-button" @click="resetMonth(0, -1)">
           <SvgIcon name="ios-arrow-back"></SvgIcon>
         </div>
@@ -11,28 +11,33 @@
         <div class="calendar-next-button" @click="resetMonth(0, 1)">
           <SvgIcon name="ios-arrow-forward"></SvgIcon>
         </div>
-      </div>
-      <div class="calender-body">
-        <div class="calender-body-header">
-          <div v-for="word in calendarBodyHeader" :key="word" class="calender-body-header-word">{{ word }}</div>
+      </Header>
+      <MainContent>
+        <div class="calendar-body-header">
+          <div v-for="word in calendarBodyHeader" :key="word" class="calendar-body-header-word">{{ word }}</div>
         </div>
-        <div class="calender-body-table">
+        <div class="calendar-body-table">
           <div
             v-for="(cell, i) in calendarCellList"
             :key="i"
-            class="calender-body-table-cell-background"
+            class="calendar-body-table-cell-background"
             @click="selectOneDate(cell)"
           >
             <CalendarCell
               :cell="cell"
-              :class="[
-                selectDateList.includes(cell.cellDate) ? `selected` : '',
-                cell.cellStatus === 'disabled' ? `disabled` : '',
-              ]"
+              :class="[props.selectDateList.includes(cell) ? `selected` : '', cell.cellStatus]"
             ></CalendarCell>
           </div>
         </div>
-      </div>
+      </MainContent>
+      <Footer>
+        <div class="calendar-day-amount">{{ `历史支出${sumExpenditure.toFixed(2)}元` }}</div>
+        <div class="calendar-day-amount">{{ `历史收入${sumIncome.toFixed(2)}元` }}</div>
+        <div class="calendar-day-amount">{{ `月总支出${calendarDataAnalyze.sumExpenditureOfMonth.toFixed(2)}元` }}</div>
+        <div class="calendar-day-amount">{{ `月总收入${calendarDataAnalyze.sumIncomeOfMonth.toFixed(2)}元` }}</div>
+        <div class="calendar-day-amount">{{ `日均支出${calendarDataAnalyze.averageExpenditure.toFixed(2)}元` }}</div>
+        <div class="calendar-day-amount">{{ `日均收入${calendarDataAnalyze.averageIncome.toFixed(2)}元` }}</div>
+      </Footer>
     </div>
   </div>
 </template>
@@ -43,6 +48,9 @@ import { calendarProps } from '@/common/calendar/calendar'
 import CalendarCell from './calendar-cell/calendar-cell.vue'
 import { LedgerQueryApi } from '@/api'
 import { CalendarAmountCell, StatusCode } from '@/model'
+import Header from '@/component/ui/header/header.vue'
+import MainContent from '@/component/ui/main-content/main-content.vue'
+import Footer from '@/component/ui/footer/footer.vue'
 
 defineOptions({
   name: 'calendar',
@@ -52,15 +60,23 @@ const props = defineProps(calendarProps)
 const emits = defineEmits(['selectDateChange', 'monthChange'])
 
 const calendarBodyHeader = ['日', '一', '二', '三', '四', '五', '六']
+const daysInMonth = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const currentDate = new Date()
 const currentYear = ref<number>(currentDate.getFullYear())
 const currentMonth = ref<number>(currentDate.getMonth() + 1)
 const calendarCellList = ref<CalendarAmountCell>([])
+const sumIncome = ref(0)
+const sumExpenditure = ref(0)
+const calendarDataAnalyze = ref({
+  sumExpenditureOfMonth: 0,
+  sumIncomeOfMonth: 0,
+  averageExpenditure: 0,
+  averageIncome: 0,
+})
 
 const getCalendarCellList = () => {
   const year = currentYear.value
   const month = currentMonth.value
-  const daysInMonth = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   calendarCellList.value = []
   // 闰年判断
   if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
@@ -101,46 +117,85 @@ const resetMonth = (numOfYear, numOfMonth) => {
   // 获取该月每天日期
   getCalendarCellList()
   // 获取该月每天消费情况
-  getSumAmountByMonth()
+  getTradeDayByMonth()
   // 清除已选择日期
   emits('monthChange')
+  // 清除表格统计数据
+  calendarDataAnalyze.value = {
+    sumExpenditureOfMonth: 0,
+    sumIncomeOfMonth: 0,
+    averageExpenditure: 0,
+    averageIncome: 0,
+  }
 }
 
 const selectOneDate = (cell) => {
   if (cell.cellStatus !== 'normal') return
-  emits('selectDateChange', cell.cellDate)
+  emits('selectDateChange', cell)
 }
 
-const getSumAmountByMonth = () => {
-  LedgerQueryApi.querySumAmountByMonth(currentYear.value, currentMonth.value).then((resp) => {
+const getTradeDayByMonth = () => {
+  LedgerQueryApi.queryTradeDayByMonth(currentYear.value, currentMonth.value).then((resp) => {
     const res = resp.data
     if (res.status !== StatusCode.SUCCESS) return console.error(`获取网盘文件失败！${res.message}`)
     const tradeDayList = res.data
     // 按照价格区间渲染数字颜色【红-绿】
     let minAmount = 0
     let maxAmount = 0
+    // 统计日均支出和收入
+    calendarDataAnalyze.value.averageExpenditure = 0
+    calendarDataAnalyze.value.averageIncome = 0
     tradeDayList.forEach((tradeDay) => {
-      minAmount = Math.min(minAmount, tradeDay.sumAmount)
-      maxAmount = Math.max(maxAmount, tradeDay.sumAmount)
+      minAmount = Math.min(minAmount, tradeDay.sumExpenditure)
+      maxAmount = Math.max(maxAmount, tradeDay.sumExpenditure)
+      calendarDataAnalyze.value.sumExpenditureOfMonth += tradeDay.sumExpenditure
+      calendarDataAnalyze.value.sumIncomeOfMonth += tradeDay.sumIncome
       // ref 数组是 Proxy 对象，无法直接调用 find
       calendarCellList.value.forEach((cell) => {
         // 不显示禁用的日期
         if (cell.cellStatus === 'disabled') return
         // 无法直接比较日期，因此通过日期的数字判断是否是同一天
         if (cell.cellDate.getTime() === Date.parse(tradeDay.tradeDay)) {
-          cell.cellAmount = tradeDay.sumAmount
+          cell.sumIncome = tradeDay.sumIncome
+          cell.sumExpenditure = tradeDay.sumExpenditure
         }
       })
     })
+    // 可以用当月天数（daysInMonth[currentMonth.value]）计算平均金额
+    // 也可以用有交易的日期去计算（tradeDayList.length），但需要注意，有收入的日期可能和有支出的日期数量差距很大，比如一个月只有一天有收入，但31天都有支出
+    calendarDataAnalyze.value.averageExpenditure =
+      calendarDataAnalyze.value.sumExpenditureOfMonth / daysInMonth[currentMonth.value]
+    calendarDataAnalyze.value.averageIncome =
+      calendarDataAnalyze.value.sumIncomeOfMonth / daysInMonth[currentMonth.value]
     calendarCellList.value.forEach((cell) => {
-      if (cell.cellAmount)
-        cell.cellPercent = (((cell.cellAmount - minAmount) / (maxAmount - minAmount)) * 100).toFixed(0)
+      if (cell.sumExpenditure !== 0)
+        cell.cellPercent = (((cell.sumExpenditure - minAmount) / (maxAmount - minAmount)) * 100).toFixed(0)
     })
+  })
+}
+
+const getSumIncome = () => {
+  LedgerQueryApi.querySumIncome().then((resp) => {
+    const res = resp.data
+    if (res.status !== StatusCode.SUCCESS) return console.error(`获取网盘文件失败！${res.message}`)
+    const { data } = res
+    sumIncome.value = data
+  })
+}
+const getSumExpenditure = () => {
+  LedgerQueryApi.querySumExpenditure().then((resp) => {
+    const res = resp.data
+    if (res.status !== StatusCode.SUCCESS) return console.error(`获取网盘文件失败！${res.message}`)
+    const { data } = res
+    sumExpenditure.value = data
   })
 }
 
 onMounted(() => {
   getCalendarCellList()
+  getTradeDayByMonth()
+  getSumIncome()
+  getSumExpenditure()
 })
 </script>
 

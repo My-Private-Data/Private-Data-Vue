@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'side-bar',
+  name: 'SideBar',
 })
 </script>
 

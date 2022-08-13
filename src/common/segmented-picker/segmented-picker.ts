@@ -9,4 +9,10 @@ export const segmentedPickerProps = {
     type: Array,
     default: () => ['On', 'Off'],
   },
+  selectedSegment: {
+    type: String,
+    default: 'On',
+  },
 }
+
+export const segmentedPickerEmits = ['change', 'update:selectSegment']

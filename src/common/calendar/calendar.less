@@ -3,7 +3,7 @@
 @cell-length: calc(100% / 7);
 
 .calendar {
-  .size(35rem);
+  .size(35rem, 45rem);
   .flex-diagonal-center;
   color: var(--label-primary);
 
@@ -13,7 +13,7 @@
     background-color: var(--background-primary);
     border-radius: 1rem;
 
-    .calendar-header {
+    .header {
       .full-width(10%);
       .flex-space-between;
 
@@ -46,29 +46,39 @@
       }
     }
 
-    .calender-body {
-      .full-width(90%);
+    .main-content {
+      .full-width(35rem);
       .flex-vertical-list;
 
-      .calender-body-header {
+      .calendar-body-header {
         .full-width(10%);
         .flex-space-between;
         .font(1.2rem, @default-font-weight, var(--label-secondary));
 
-        .calender-body-header-word {
+        .calendar-body-header-word {
           .size(@cell-length);
           .flex-diagonal-center;
         }
       }
 
-      .calender-body-table {
+      .calendar-body-table {
         .full-width(90%);
         .flex-horizontal-list;
 
-        .calender-body-table-cell-background {
+        .calendar-body-table-cell-background {
           .size(@cell-length);
           .flex-diagonal-center;
         }
+      }
+    }
+
+    .footer {
+      .full-width(5rem);
+      .default-border;
+      .flex-horizontal-list;
+      .calendar-day-amount {
+        .size(50%, 1rem);
+
       }
     }
   }

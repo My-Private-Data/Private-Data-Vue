@@ -3,10 +3,14 @@
 .svg-icon {
   // flex 是为了调整 svg 大小
   .flex-diagonal-center;
+  // 和 label 保持一样的动效
+  .label-transition;
 
   svg {
+    // 避免 svg 尺寸超出 div，影响到其他 div
+    .full-size;
+    // 垂直居中
     .flex-vertical-center;
-    .label-transition;
     // 继承文字的颜色
     fill: currentColor;
   }

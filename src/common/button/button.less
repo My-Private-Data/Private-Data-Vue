@@ -1,24 +1,48 @@
 @import 'src/style/function';
 
 .button {
-  .flex-diagonal-center;
-  .button-transition;
-  .background(var(--system-blue), var(--tag-title-blue));
-  cursor: pointer;
 
-  .button-icon-area {
-    .full-height(3rem);
-    .flex-vertical-center;
+  .button-content {
+    .flex-diagonal-center;
 
-    .svg-icon {
-      .size(1.5rem);
-      color: var(--system-white);
+    .button-icon-area {
+      // 在没有 label 时自动填满
+      .full-height(50%);
+      .flex-diagonal-center;
+
+      .svg-icon {
+        .size(60%);
+      }
+
+      &.no-label {
+        .full-size;
+      }
     }
-  }
 
-  .button-title {
-    width: 3rem;
-    color: var(--system-white);
-    .ellipsis-line;
+    .button-label-area {
+      .full-height(50%);
+      .flex-vertical-center;
+
+      .button-label {
+        .ellipsis-line;
+      }
+
+      &.no-icon {
+        .full-size;
+        .flex-diagonal-center;
+      }
+    }
+
+    &.theme-default {
+      .default-button;
+    }
+
+    &.theme-blue {
+      .blue-button;
+    }
+
+    &.theme-green {
+      .green-button;
+    }
   }
 }

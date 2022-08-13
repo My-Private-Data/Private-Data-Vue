@@ -1,24 +1,35 @@
 @import 'src/style/function';
 
 .calendar-cell {
-  .size(3.5rem, 3.5rem, 0.8rem);
+  .size(3.5rem, auto, 1rem);
   .flex-vertical-list;
   align-content: center;
-  .background(var(--background-primary), var(--background-secondary));
+  .background(none, var(--background-secondary));
   cursor: pointer;
+  padding: 0.3rem;
 
 
   &.selected {
-    .background(var(--system-blue), var(--tag-title-blue));
+    .background(var(--system-blue), var(--tag-label-blue));
 
-    .calender-cell-date {
+    .calendar-cell-date {
       // 点击的时候不要延迟
       transition-duration: 0s;
       color: var(--system-white);
     }
 
-    .calender-cell-amount {
-      color: rgba(255, 255, 255, .8);
+    .calendar-cell-detail {
+      .calendar-cell-amount {
+        color: rgba(255, 255, 255, .8);
+
+        &.amount-expenditure {
+          color: var(--tag-background-pink);
+        }
+
+        &.amount-income {
+          color: var(--tag-background-green);
+        }
+      }
     }
   }
 
@@ -29,23 +40,34 @@
       background: none;
     }
 
-    .calender-cell-date {
+    .calendar-cell-date {
       color: var(--label-quaternary);
     }
   }
 
-  .calender-cell-date {
+  .calendar-cell-date {
     .default-font(1.5rem);
     .flex-diagonal-center;
     .full-width(2rem);
   }
 
-  .calender-cell-amount {
+  .calendar-cell-detail {
     .font(0.8rem, @default-font-weight, var(--label-tertiary));
-    .ellipsis-line;
     .full-width(auto);
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
     text-align: center;
+
+    .calendar-cell-amount {
+      .full-width(1rem);
+      .ellipsis-line;
+      .flex-horizontal-start;
+
+      &.amount-expenditure {
+        color: var(--icon-brown);
+      }
+
+      &.amount-income {
+        color: var(--icon-green);
+      }
+    }
   }
 }

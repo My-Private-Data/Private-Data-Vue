@@ -1,0 +1,137 @@
+@import 'src/style/function';
+
+.trade {
+  .main-content {
+    .full-width(auto);
+    .background(none, var(--background-secondary));
+    .flex-diagonal-center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    .trade-detail-left-content {
+      .full-height(4rem);
+      .flex-vertical-center;
+
+      .trade-detail-icon {
+        .size(3rem, 3rem, 1rem);
+        background-color: var(--system-blue);
+        .flex-diagonal-center;
+        box-shadow: var(--button-shadow-secondary);
+
+        .svg-icon {
+          .size(1.5rem);
+          color: var(--system-white);
+        }
+
+        .trade-detail-icon;
+      }
+    }
+
+    .trade-detail-main-content {
+      .full-height(60%);
+      .flex-vertical-list;
+
+      .trade-detail-remark {
+        .size(90%, 2rem);
+        .default-font(1.2rem);
+        line-height: 2.8rem;
+        .ellipsis-line;
+      }
+
+      .trade-detail-brand {
+        .full-width(2rem);
+        .flex-vertical-center;
+        .font(1rem, @default-font-weight, var(--label-tertiary));
+      }
+    }
+
+    .trade-detail-right-content {
+      .full-height(5rem);
+      .default-font(1.2rem);
+      .flex-vertical-list;
+
+      .trade-detail-income {
+        .full-width(50%);
+        .flex-horizontal-end;
+        .flex-vertical-end;
+      }
+
+      .trade-detail-expenditure {
+        .full-width(50%);
+        .flex-horizontal-end;
+        .flex-vertical-end;
+      }
+    }
+  }
+
+  .footer {
+    .trade-detail-sub-content {
+      .size(calc(100% - 5rem), auto);
+      position: relative;
+      left: 4rem;
+
+      .collapse-button {
+        .flex-diagonal-center;
+        .round-button(3rem);
+        .absolute-position(0.5rem, calc(100% - 3rem));
+
+        .svg-icon {
+          .label-transition;
+          .size(50%);
+        }
+      }
+
+      .sub-trade-area {
+        // 宽高由 vue 控制
+        .physical-transition;
+        overflow: hidden;
+      }
+
+      .collapse-sub-trade-area {
+        .full-width(4rem);
+        padding-left: 1.5rem;
+
+        .collapse-sub-trade-icon-area {
+          .flex-horizontal-list;
+
+          .trade-detail-icon {
+            .size(3rem, 3rem, 1rem);
+            .flex-diagonal-center;
+            background-color: var(--system-blue);
+            box-shadow: var(--button-shadow-secondary);
+            margin-right: -1.2rem;
+
+            .svg-icon {
+              .size(1.5rem);
+              color: var(--system-white);
+            }
+
+            .trade-detail-icon;
+          }
+          .trade-detail-more-icon-background {
+            .size(3rem);
+            // 背景色和前面的图标一样
+            .trade-detail-icon;
+
+            .trade-detail-more-icon {
+              .size(3rem, 3rem, 1rem);
+              .default-font(1rem);
+              .flex-diagonal-center;
+              // 叠加一层毛玻璃
+              backdrop-filter: saturate(100%) blur(14px);
+              background: rgba(255, 255, 255, 0.3);
+            }
+          }
+        }
+
+        .sub-trade-number {
+          .full-height(50%);
+          .flex-vertical-center;
+          .default-font(1rem);
+        }
+      }
+    }
+  }
+}

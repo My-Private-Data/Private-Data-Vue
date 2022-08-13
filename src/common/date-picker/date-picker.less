@@ -1,0 +1,22 @@
+@import 'src/style/function';
+
+.date-picker {
+  color: var(--label-primary);
+  .picker-line {
+
+  }
+
+  .picker-list {
+
+  }
+
+  .picker-wheel {
+    // 界面 3D 化变成圆桶滚轮
+    transform-style: preserve-3d;
+
+    .picker-wheel-item {
+      // 隐藏滚轮在屏幕内侧的 dom
+      backface-visibility: hidden;
+    }
+  }
+}

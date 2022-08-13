@@ -1,0 +1,41 @@
+@import 'src/style/function';
+
+.trade-list {
+  .size(30rem);
+  overflow-y: scroll;
+
+  .trade-date-card {
+    background-color: var(--background-primary);
+    box-shadow: var(--card-shadow-secondary);
+    border-radius: 1rem;
+    margin-top: 1rem;
+
+    .nav-bar {
+      .full-width(4rem);
+      .flex-space-between;
+      .default-font(1.5rem);
+      padding: 1rem;
+
+      .trade-date {
+        .full-height(30%);
+        .flex-horizontal-start;
+        .flex-vertical-center;
+        text-indent: 0.5rem;
+      }
+
+      .trade-sum {
+        .full-height(70%);
+        .flex-horizontal-end;
+        .flex-vertical-center;
+        .font(1rem, @default-font-weight, var(--label-tertiary));
+      }
+    }
+
+    .main-content {
+
+      .trade-detail {
+
+      }
+    }
+  }
+}

@@ -1,10 +1,15 @@
 <template>
   <div class="calendar-cell">
-    <div class="calender-cell-date">
-      {{ cell.cellDate.getDate() }}
+    <div class="calendar-cell-date">
+      {{ props.cell.cellDate.getDate() }}
     </div>
-    <div class="calender-cell-amount">
-      {{ cell.cellAmount }}
+    <div class="calendar-cell-detail">
+      <div v-if="props.cell.sumExpenditure !== 0" class="calendar-cell-amount" :class="'amount-expenditure'">
+        {{ `-` + props.cell.sumExpenditure }}
+      </div>
+      <div v-if="props.cell.sumIncome !== 0" class="calendar-cell-amount" :class="'amount-income'">
+        {{ `+` + props.cell.sumIncome }}
+      </div>
     </div>
   </div>
 </template>

@@ -1,0 +1,51 @@
+@import 'src/style/function';
+
+.side-drawer {
+  .physical-transition;
+  z-index: 1;
+  flex-shrink: 0;
+
+  .side-drawer-content {
+    overflow: hidden;
+  }
+
+  .collapse-button {
+    .flex-diagonal-center;
+    .round-button(3rem);
+
+    .svg-icon {
+      .label-transition;
+      .size(50%);
+    }
+  }
+
+  &.position-left {
+    position: relative;
+    right: 0;
+    top: 0;
+
+    .collapse-button {
+      .absolute-position(50%, calc(100% - 1.5rem));
+    }
+  }
+
+  &.position-right {
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    .collapse-button {
+      .absolute-position(50%, -1.5rem);
+    }
+  }
+
+  &.position-top {
+    left: 0;
+    top: 0;
+  }
+
+  &.position-bottom {
+    left: 0;
+    bottom: 0;
+  }
+}

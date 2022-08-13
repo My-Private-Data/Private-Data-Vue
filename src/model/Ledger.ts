@@ -1,6 +1,9 @@
 export class Ledger {
-  /** 交易 ID */
+  /** 交易单 ID */
   tradeId: string
+
+  /** 父交易单 ID */
+  parentId: string
 
   /** 用户 ID */
   userId: string
@@ -12,7 +15,7 @@ export class Ledger {
   discount: number
 
   /** 类别 */
-  category: string
+  categoryId: string
 
   /** 备注 */
   remark: string
@@ -35,12 +38,16 @@ export class Ledger {
   /** 更新时间 */
   updateTime: Date
 
+  /** 子订单集合 */
+  subLedgerSet: Set<Ledger>
+
   constructor(
     tradeId: string,
+    parentId: string,
     userId: string,
     amount: number,
     discount: number,
-    category: string,
+    categoryId: string,
     remark: string,
     tradeTime: Date,
     brand: string,
@@ -48,12 +55,14 @@ export class Ledger {
     isDelete: boolean,
     createTime: Date,
     updateTime: Date,
+    subLedgerSet?: Set<Ledger>,
   ) {
     this.tradeId = tradeId
+    this.parentId = parentId
     this.userId = userId
     this.amount = amount
     this.discount = discount
-    this.category = category
+    this.categoryId = categoryId
     this.remark = remark
     this.tradeTime = tradeTime
     this.brand = brand
@@ -61,5 +70,6 @@ export class Ledger {
     this.isDelete = isDelete
     this.createTime = createTime
     this.updateTime = updateTime
+    this.subLedgerSet = subLedgerSet || new Set()
   }
 }

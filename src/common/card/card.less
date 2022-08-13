@@ -1,13 +1,25 @@
 @import 'src/style/function';
 
 .card {
+  box-shadow: var(--card-shadow-primary);
+  cursor: pointer;
+  overflow: hidden;
+  // 背景图片设置
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  .physical-transition;
 
-  .footer {
-
-    &. isBlur{
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: saturate(180%) blur(10px);
-    }
+  .header {
+    .full-width(25%);
   }
 
+  .main-content {
+    .full-width(50%);
+    white-space: nowrap;
+  }
+
+  .footer {
+    .full-width(25%);
+  }
 }

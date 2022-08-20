@@ -51,7 +51,7 @@ import Button from '@/common/button/button.vue'
         padding: 1rem;
         border-top: 1px rgba(255, 255, 255, 0.5) solid;
         backdrop-filter: saturate(100%) blur(14px);
-        background: rgba(255, 255, 255, 0.3);
+        background: var(--background-glass-secondary);
 
         .card-label {
           .font(1rem, 800, var(--label-primary));

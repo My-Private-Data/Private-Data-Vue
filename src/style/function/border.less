@@ -8,3 +8,45 @@
 .default-border(@border-width: @default-border-width) when (isnumber(@border-width)) {
   border: @border-width solid @border-color;
 }
+
+.input-border {
+  &:focus, &:hover {
+    border-color: var(--label-secondary);
+    &.default {
+
+    }
+    &.primary {
+      border-color: var(--icon-blue);
+    }
+    &.success {
+      border-color: var(--icon-green);
+    }
+    &.warning{
+      border-color: var(--icon-brown);
+    }
+    &.error{
+      border-color: var(--icon-red);
+    }
+  }
+}
+
+.input-underline {
+  &:focus, &:hover {
+    border-color: var(--label-secondary);
+    &.default {
+
+    }
+    &.primary {
+      border-color: var(--icon-blue);
+    }
+    &.success {
+      border-color: var(--icon-green);
+    }
+    &.warning{
+      border-color: var(--icon-brown);
+    }
+    &.error{
+      border-color: var(--icon-red);
+    }
+  }
+}

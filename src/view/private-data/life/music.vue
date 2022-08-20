@@ -5,7 +5,7 @@
 </template>
 
 <style lang="less" scoped>
-@import 'src/style/function';
+@import '../../../style/function';
 
 .music {
   .full-size;

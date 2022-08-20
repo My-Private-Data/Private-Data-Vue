@@ -1,13 +1,13 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="album">album</div>
+  <div class="bookmark">bookmark</div>
 </template>
 
 <style lang="less" scoped>
-@import 'src/style/function';
+@import '../../../style/function';
 
-.album {
+.bookmark {
   .full-size;
   .background;
 }

@@ -4,15 +4,19 @@
       ref="refSwitchNode"
       type="button"
       role="switch"
-      :class="['switch-background', { checked: checkedStatus, loading: loading, disabled: disabled }, colorTheme]"
+      :class="[
+        'switch-background',
+        { checked: checkedStatus, loading: props.loading, disabled: props.disabled },
+        props.colorTheme,
+      ]"
       :style="switchStyle"
-      :disabled="disabled || loading"
+      :disabled="props.disabled || props.loading"
       @click="handleClick"
       @blur="handleBlur"
       @mouseup="handleMouseUp"
     >
       <div class="switch-toggle" :style="toggleStyle">
-        <Loading v-if="loading"></Loading>
+        <Loading v-if="props.loading"></Loading>
       </div>
       <div :class="['switch-inner', { checked: checkedStatus }]">
         <slot name="switch-inner" />

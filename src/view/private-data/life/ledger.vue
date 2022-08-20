@@ -82,7 +82,7 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
-@import 'src/style/function';
+@import '../../../style/function';
 
 .ledger {
   .full-size;
@@ -95,7 +95,7 @@ onMounted(() => {
 
   .right-drawer {
     backdrop-filter: saturate(180%) blur(14px);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--background-glass-tertiary);
   }
 }
 </style>

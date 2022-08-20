@@ -43,3 +43,25 @@
   word-break: break-all;
   white-space: nowrap;
 }
+
+.status-font() {
+  &.default {
+    color: var(--input-text-color);
+  }
+
+  &.primary {
+    color: var(--tag-label-blue);
+  }
+
+  &.success {
+    color: var(--tag-label-green);
+  }
+
+  &.warning {
+    color: var(--tag-label-yellow);
+  }
+
+  &.error {
+    color: var(--tag-label-red);
+  }
+}

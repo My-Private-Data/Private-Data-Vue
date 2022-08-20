@@ -1,0 +1,106 @@
+@import 'src/style/function';
+
+.input {
+  margin: 1rem;
+
+  .top-area {
+    position: relative;
+    display: flex;
+
+    .label-area {
+      .label-transition;
+
+      &.background, &.bordered {
+        .status-font;
+      }
+
+      &.underline {
+        &.isFocus {
+          .status-font;
+        }
+      }
+    }
+
+    .label-placeholder-area {
+      .physical-transition;
+      // 避免遮住下方 input
+      pointer-events: none;
+
+      &.background {
+        .status-font;
+      }
+
+      &.underline, &.bordered {
+        color: var(--input-placeholder-color);
+
+        &.isFocus {
+          .status-font;
+        }
+      }
+    }
+
+    .placeholder-area {
+      .label-transition;
+      color: var(--input-placeholder-color);
+    }
+  }
+
+  .input-area {
+    position: relative;
+    display: flex;
+
+    input {
+      .full-size;
+
+      &.underline {
+        .label-transition;
+        border-bottom: 2px solid var(--input-border-color);
+
+        &:focus {
+          .input-underline;
+        }
+      }
+
+      &.background {
+        .input-background;
+        .label-transition;
+
+        &:focus {
+          box-shadow: var(--card-shadow-secondary);
+          margin-top: -2px;
+        }
+      }
+
+      &.bordered {
+        .label-transition;
+        border: 2px solid var(--input-border-color);
+        .input-border;
+
+        &:focus {
+          margin-top: -2px;
+        }
+      }
+    }
+
+    .prefix-area {
+      .flex-diagonal-center;
+
+      &.background {
+        .input-prefix-background;
+        .label-transition;
+      }
+    }
+
+    .postfix-area {
+      .flex-diagonal-center;
+
+      &.background {
+        .input-prefix-background;
+        .label-transition;
+      }
+    }
+  }
+
+  .bottom-area {
+  }
+}

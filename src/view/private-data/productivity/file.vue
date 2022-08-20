@@ -1,13 +1,13 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="todo">todo</div>
+  <div class="file">file</div>
 </template>
 
 <style lang="less" scoped>
-@import 'src/style/function';
+@import '../../../style/function';
 
-.todo {
+.file {
   .full-size;
   .background;
 }

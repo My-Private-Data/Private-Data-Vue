@@ -2,12 +2,12 @@ export const switchProps = {
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,
-    default: undefined,
+    default: false,
   },
   /** 是否处于加载中状态 */
   loading: {
     type: Boolean,
-    default: undefined,
+    default: false,
   },
   /** 组件大小，背景长:背景宽:背景圆角 = 51:31:27 */
   size: {

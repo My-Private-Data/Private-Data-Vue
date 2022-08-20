@@ -19,32 +19,32 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/album',
         name: 'album',
-        component: () => import('@/view/private-data/album.vue'),
+        component: () => import('@/view/private-data/life/album.vue'),
       },
       {
         path: '/bookmark',
         name: 'bookmark',
-        component: () => import('@/view/private-data/bookmark.vue'),
+        component: () => import('@/view/private-data/productivity/bookmark.vue'),
       },
       {
         path: '/file',
         name: 'file',
-        component: () => import('@/view/private-data/file.vue'),
+        component: () => import('@/view/private-data/productivity/file.vue'),
       },
       {
         path: '/ledger',
         name: 'ledger',
-        component: () => import('@/view/private-data/ledger.vue'),
+        component: () => import('@/view/private-data/life/ledger.vue'),
       },
       {
         path: '/music',
         name: 'music',
-        component: () => import('@/view/private-data/album.vue'),
+        component: () => import('@/view/private-data/life/album.vue'),
       },
       {
         path: '/todo',
         name: 'todo',
-        component: () => import('@/view/private-data/todo.vue'),
+        component: () => import('@/view/private-data/productivity/todo.vue'),
       },
     ],
   },

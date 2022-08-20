@@ -1,19 +1,32 @@
 @import 'src/style/function';
 
-.button {
-  .size(10rem, 2.5rem, 1rem);
-  .flex-diagonal-center;
-  .button-transition;
-  .background(var(--tag-background-blue));
-  cursor: pointer;
 
-  .tag-title {
-    width: 3rem;
-    color: var(--tag-label-blue);
-    .ellipsis-line;
+.tag {
+  .flex-diagonal-center;
+  .tag-background;
+  .physical-transition;
+  overflow: hidden;
+
+  .tag-label {
+    .full-size;
+    .flex-diagonal-center;
   }
 
-  &:hover {
-    background: var(--grey3);
+  .close-button {
+    flex-shrink: 0;
+    .flex-diagonal-center;
+    overflow: hidden;
+    cursor: pointer;
+    .physical-transition;
+    border-radius: 50%;
+
+    .svg-icon {
+      .full-size;
+    }
+
+    &:hover {
+      backdrop-filter: saturate(180%) blur(14px);
+      background: var(--background-glass-primary);
+    }
   }
 }

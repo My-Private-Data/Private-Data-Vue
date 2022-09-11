@@ -66,6 +66,12 @@
         <div class="text-split">月</div>
         <input v-model="day" type="text" maxlength="2" />
         <div class="text-split">日</div>
+        <input v-model="hour" type="text" maxlength="2" />
+        <div class="text-split">时</div>
+        <input v-model="minute" type="text" maxlength="2" />
+        <div class="text-split">分</div>
+        <input v-model="second" type="text" maxlength="2" />
+        <div class="text-split">秒</div>
       </div>
       <div class="action-area">
         <Button :label="'Submit'" :theme="'blue'" :width="5" :height="2" rounded @click="addNewLedger"></Button>
@@ -96,6 +102,9 @@ const ledger = ref<Ledger>(new Ledger())
 const year = ref<number>(new Date().getFullYear())
 const month = ref<number>(new Date().getMonth() + 1)
 const day = ref<number>(new Date().getDate())
+const hour = ref<number>(new Date().getHours())
+const minute = ref<number>(new Date().getMinutes())
+const second = ref<number>(new Date().getSeconds())
 
 const isIncome = (category: TradeCategory) => {
   return category.categoryId.startsWith('1') && category.categoryLevel === 1
@@ -117,7 +126,7 @@ const handleMoneyChange = () => {
 }
 
 const addNewLedger = () => {
-  ledger.value.tradeTime = new Date(year.value, month.value - 1, day.value)
+  ledger.value.tradeTime = new Date(year.value, month.value - 1, day.value, hour.value, minute.value, second.value)
   ledger.value.createTime = new Date()
   // 添加的时候设置修改时间
   ledger.value.updateTime = ledger.value.createTime

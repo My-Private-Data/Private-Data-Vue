@@ -36,10 +36,9 @@ defineOptions({
 })
 
 const props = defineProps(tradeListProps)
-
 const getTradeList = (ledgerList: Array<Ledger>) => {
   const ledgerIdMap = new Map<{ tradeId: number }, Ledger>()
-  console.info(ledgerList)
+  // TODO 支持多级订单嵌套
   for (const ledger of ledgerList) {
     if (ledger.parentId === ledger.tradeId) {
       ledgerIdMap.set(ledger.tradeId, ledger)
@@ -47,10 +46,10 @@ const getTradeList = (ledgerList: Array<Ledger>) => {
   }
   for (const ledger of ledgerList) {
     if (ledger.parentId !== ledger.tradeId) {
-      console.info(ledgerIdMap.get(ledger.parentId))
       ledgerIdMap.get(ledger.parentId).subLedgerSet.add(ledger)
     }
   }
+
   return ledgerIdMap.values()
 }
 </script>

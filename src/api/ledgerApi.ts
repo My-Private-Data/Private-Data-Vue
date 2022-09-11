@@ -17,18 +17,22 @@ export class LedgerQueryApi {
     return request.get('ledger/1/query/category')
   }
 
-  public static queryLedgerByDate(date: string): AxiosPromise<WebResult<Ledger[]>> {
+  public static queryLedgerByDate(year: number, month: number, day: number): AxiosPromise<WebResult<Ledger[]>> {
     return request.get('ledger/1/query/date', {
       params: {
-        singleDate: date,
+        year,
+        month,
+        day,
       },
     })
   }
 
-  public static querySumIncomeByDate(date: string): AxiosPromise<WebResult<number>> {
+  public static querySumIncomeByDate(year: number, month: number, day: number): AxiosPromise<WebResult<number>> {
     return request.get('ledger/1/query/date/amount/income', {
       params: {
-        singleDate: date,
+        year,
+        month,
+        day,
       },
     })
   }
@@ -37,10 +41,12 @@ export class LedgerQueryApi {
     return request.get('ledger/1/query/sum/income')
   }
 
-  public static querySumExpenditureByDate(date: string): AxiosPromise<WebResult<number>> {
+  public static querySumExpenditureByDate(year: number, month: number, day: number): AxiosPromise<WebResult<number>> {
     return request.get('ledger/1/query/date/amount/expenditure', {
       params: {
-        singleDate: date,
+        year,
+        month,
+        day,
       },
     })
   }

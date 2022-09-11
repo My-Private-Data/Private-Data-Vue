@@ -1,0 +1,14 @@
+@import 'src/style/function';
+
+.option {
+  cursor: pointer;
+  margin-top: 0.1rem;
+  .flex-diagonal-center;
+  .label-transition;
+  .background(var(--background-primary), var(--background-secondary));
+
+  &.selected {
+    background-color: var(--tag-background-blue);
+    color: var(--tag-label-blue);
+  }
+}

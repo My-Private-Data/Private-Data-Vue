@@ -41,9 +41,19 @@
       }
 
       .trade-detail-brand {
-        .full-width(2rem);
-        .flex-vertical-center;
+        .full-width(3rem);
         .font(1rem, @default-font-weight, var(--label-tertiary));
+
+        .brand-tag-area {
+          .full-size;
+          .flex-vertical-center;
+          overflow-y: hidden;
+          overflow-x: auto;
+
+          .tag {
+            margin-right: 1rem;
+          }
+        }
       }
     }
 
@@ -110,6 +120,7 @@
 
             .trade-detail-icon;
           }
+
           .trade-detail-more-icon-background {
             .size(3rem);
             // 背景色和前面的图标一样

@@ -33,7 +33,12 @@
         <Tag :status="'success'" :label="'testfor123123'" closeable></Tag>
         <Tag :status="'warning'" :label="'testfor'" closeable></Tag>
         <Tag :status="'error'" closeable></Tag>
-        <Select></Select>
+        <Select>
+          <Option v-for="(option, i) in state.options" :key="i" :label="option.label" :value="option.value"></Option>
+        </Select>
+      </div>
+      <div class="component-area">
+        <DragList></DragList>
       </div>
     </MainContent>
   </div>
@@ -51,6 +56,8 @@ import Input from '@/common/input/input.vue'
 import Tag from '@/common/tag/tag.vue'
 import Card from '@/common/card/card.vue'
 import Select from '@/common/select/select.vue'
+import DragList from '@/common/drag-list/drag-lsit.vue'
+import Option from '@/common/select/option/option.vue'
 
 const state = reactive({
   apps: [
@@ -65,6 +72,24 @@ const state = reactive({
     {
       title: '表格数据',
       icon: 'list',
+    },
+  ],
+  options: [
+    {
+      value: '选项1',
+      label: 'Option 1',
+    },
+    {
+      value: '选项2',
+      label: 'Option 2',
+    },
+    {
+      value: '选项3',
+      label: 'Option 3',
+    },
+    {
+      value: '选项4',
+      label: 'Option 4',
     },
   ],
 })

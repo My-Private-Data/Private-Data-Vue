@@ -6,14 +6,22 @@
         :key="item.label"
         class="list-item"
         draggable="true"
-        @dragstart="dragstart(index)"
-        @dragenter.prevent="dragenter(index)"
+        @drag="drag"
+        @dragstart="dragstart($event, index)"
+        @dragend.prevent="dragend"
+        @dragenter.prevent="dragenter($event, index)"
         @dragover.prevent="dragover(index)"
-        @drop.prevent="drop(index)"
+        @dragleave="dragleave(index)"
+        @drop.prevent="drop"
       >
         {{ item.label }}
       </li>
     </transition-group>
+    <div class="put-area">
+      <div class="sub-area" @dragover="dragoverContainer">拖到这里</div>
+      <div class="sub-area">不可拖到这里</div>
+      <div class="sub-area">拖到这里</div>
+    </div>
   </div>
 </template>
 
@@ -21,7 +29,7 @@
 import { ref } from 'vue'
 
 defineOptions({
-  name: 'drag-list',
+  name: 'DragList',
 })
 
 const props = defineProps({
@@ -42,37 +50,71 @@ const list = ref([
   { label: '列表 4' },
   { label: '列表 5' },
   { label: '列表 6' },
+  { label: '列表 7' },
+  { label: '列表 8' },
+  { label: '列表 9' },
+  { label: '列表 10' },
+  { label: '列表 11' },
+  { label: '列表 12' },
 ])
 
-const dragIndex = ref<number>()
-const enterIndex = ref<number>()
+const dragIndex = ref<number>(-1)
 
-// 开始拖拽
-function dragstart(index): void {
+const dragstart = (e: DragEvent, index: number) => {
+  const ele = e.target as HTMLElement
+  // x, y 拖拽时相对于鼠标的位置
+  // const copyEle = ele.cloneNode(true) as HTMLElement
+  // copyEle.classList.add('drag-image')
+  // const dt = e.dataTransfer
+  // dt.setDragImage(copyEle, copyEle.offsetWidth, copyEle.offsetHeight)
   dragIndex.value = index
-  console.info(`drag start ${dragIndex.value}`)
 }
 
-// 拖拽进入某个区域（只触发一次）
-function dragenter(index: number): void {
+const drag = (e: DragEvent) => {
+  const ele = e.target as HTMLElement
+  ele.classList.add('dragging')
+}
+
+const dragenter = (e: DragEvent, index: number) => {
+  // 如果拖到了其他位置
   if (dragIndex.value !== index) {
-    const moving = list.value[dragIndex.value]
+    const dragObject = list.value[dragIndex.value]
+    // 删除原位置上的拖拽对象
     list.value.splice(dragIndex.value, 1)
-    list.value.splice(index, 0, moving)
-    // 排序变化后目标对象的索引变成源对象的索引
+    // 把拖拽对象插入到新位置
+    list.value.splice(index, 0, dragObject)
+    // 记录新位置下标
     dragIndex.value = index
     console.info(`drag enter ${index}`)
+    e.stopPropagation()
   }
 }
 
-// dragenter后，继续拖拽时
-function dragover(index: number): void {
-  // console.info(`drag over ${index}`)
+const dragover = (index: number) => {
+  console.info(`drag over ${index}`)
 }
 
-// 松开拖拽
-function drop(index: number): void {
-  console.info(`drop ${index}`)
+const dragleave = (index: number) => {
+  console.info(`drag leave ${index}`)
+}
+
+const drop = (e: DragEvent) => {
+  const ele = e.target as HTMLElement
+  dragIndex.value = -1
+  ele.classList.remove('dragging')
+  ele.classList.remove('drag-image')
+}
+
+const dragend = (e: DragEvent) => {
+  const ele = e.target as HTMLElement
+  dragIndex.value = -1
+  ele.classList.remove('dragging')
+  ele.classList.remove('drag-image')
+}
+
+// 容器拖拽事件
+const dragoverContainer = () => {
+  console.info(dragIndex.value)
 }
 </script>
 

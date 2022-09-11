@@ -1,4 +1,6 @@
-export class Ledger {
+import { TableData } from '@/model/TableData'
+
+export class Ledger extends TableData {
   /** 交易单 ID */
   tradeId: string
 
@@ -57,6 +59,7 @@ export class Ledger {
     updateTime: Date,
     subLedgerSet?: Set<Ledger>,
   ) {
+    super(tradeId, createTime, updateTime)
     this.tradeId = tradeId
     this.parentId = parentId
     this.userId = userId

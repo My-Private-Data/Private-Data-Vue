@@ -37,8 +37,11 @@ const handleSelectDateChange = (cell: CalendarAmountCell) => {
   if (selectDateMap.value.has(cell)) selectDateMap.value.delete(cell)
   // 添加选中的日期，同步增加账单列表
   else {
-    const singleDate = getYearMonthDay(cell.cellDate)
-    LedgerQueryApi.queryLedgerByDate(singleDate).then((resp) => {
+    const year = cell.cellDate.getFullYear()
+    const month = cell.cellDate.getMonth() + 1
+    const day = cell.cellDate.getDate()
+
+    LedgerQueryApi.queryLedgerByDate(year, month, day).then((resp) => {
       const res = resp.data
       if (res.status !== StatusCode.SUCCESS) return console.error(`获取网盘文件失败！${res.message}`)
       // 初始化为空数组

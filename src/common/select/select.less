@@ -1,5 +1,42 @@
 @import 'src/style/function';
 
 .select {
-  .full-width(auto);
+  .default-border;
+  .flex-vertical-center;
+  position: relative;
+
+  .select-area {
+    .full-size;
+    .flex-space-between;
+    cursor: pointer;
+
+    .label-area {
+      .full-height(80%);
+      .flex-vertical-center;
+    }
+
+    .postfix-area {
+      .full-height(20%);
+      .flex-diagonal-center;
+
+      .svg-icon {
+        .full-height(80%);
+        .physical-transition;
+        overflow: hidden;
+
+        &.is-collapse {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  .option-area {
+    position: absolute;
+    .flex-vertical-list;
+    .physical-transition;
+    overflow: hidden;
+    overflow-y: scroll;
+    box-shadow: var(--button-shadow-secondary);
+  }
 }

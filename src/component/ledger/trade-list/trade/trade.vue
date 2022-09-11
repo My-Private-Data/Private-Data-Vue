@@ -11,7 +11,9 @@
           {{ props.ledger.remark }}
         </div>
         <div class="trade-detail-brand">
-          {{ props.ledger.brand }}
+          <div v-if="props.ledger.brand && props.ledger.brand.length > 0" class="brand-tag-area">
+            <Tag v-for="(brand, i) in props.ledger.brand.split('，')" :key="i" :label="brand" rounded></Tag>
+          </div>
         </div>
       </div>
       <div class="trade-detail-right-content">
@@ -68,6 +70,7 @@ import { computed, CSSProperties, ref } from 'vue'
 import { tradeProps } from '@/component/ledger/trade-list/trade/trade'
 import MainContent from '@/component/ui/main-content/main-content.vue'
 import Footer from '@/component/ui/footer/footer.vue'
+import Tag from '@/common/tag/tag.vue'
 import { addUnit } from '@/util'
 
 defineOptions({

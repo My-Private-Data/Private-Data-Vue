@@ -23,23 +23,15 @@ const emits = defineEmits(tagEmits)
 
 const isCollapse = ref<Boolean>(false)
 const tagStyle = computed<CSSProperties>(() => {
-  let tagWidth
   let tagHeight
   let borderRadius
   // 19:4:4
   if (props.size) {
-    tagWidth = 2 * viewLength(props.label)
     tagHeight = props.size
     borderRadius = props.rounded ? props.size : props.size * 0.2
-    // 限制最小长度为宽度的 1.5
-    if (tagWidth < 1.5 * tagHeight) tagWidth = 1.5 * tagHeight
-    // rounded 视觉效果缩小
-    if (props.rounded) tagWidth += 0.5
-    if (props.closeable) tagWidth += 1
   }
 
   return {
-    width: isCollapse.value ? 0 : addUnit(tagWidth, 'rem'),
     height: isCollapse.value ? 0 : addUnit(tagHeight, 'rem'),
     borderRadius: addUnit(borderRadius, 'rem'),
     // 美化缩小时的效果

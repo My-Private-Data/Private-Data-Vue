@@ -2,7 +2,7 @@
 
 .drag-list {
   .list {
-    list-style: none;
+    .flex-horizontal-list;
 
     .drag-move {
       transition: transform .3s;
@@ -11,10 +11,40 @@
     .list-item {
       .size(10rem, 3rem, 1rem);
       .flex-diagonal-center;
-      cursor: move;
-      background: var(--light-red);
-      color: var(--saturate-red);
+      background: var(--tag-background-red);
+      color: var(--tag-label-red);
       margin-bottom: 6px;
+      .label-transition;
+      // 悬浮时变为可移动图标
+      cursor: move;
+      // 防止 overflow: hidden 失效
+      position: relative;
+      z-index: 1;
+      // 防止 overflow: hidden 失效
+      overflow: hidden;
+
+      &.drag-image {
+        transform: rotate(15deg);
+      }
+
+      &.dragging {
+        border: var(--tag-background-red) dashed 1px;
+        background: none;
+      }
+    }
+  }
+
+  .put-area {
+    .flex-vertical-center;
+    .flex-space-around;
+    .size(30rem, 10rem, 1rem);
+    .default-border;
+
+    .sub-area {
+      .size(8rem, 8rem, 1rem);
+      background: var(--system-grey6);
+      .flex-diagonal-center;
+
     }
   }
 }

@@ -8,7 +8,7 @@ import Button from '@/common/button/button.vue'
     <Card :image="'src/asset/image/fruit-1.jpg'" :size="20" :link="'component'">
       <template #card-footer>
         <div class="card-footer-area">
-          <div class="card-label">Component Center</div>
+          <div class="card-label">V-UI</div>
           <Button :label="'Try it'" :theme="'blue'" :width="5" :height="2" rounded></Button>
         </div>
       </template>
@@ -25,6 +25,22 @@ import Button from '@/common/button/button.vue'
       <template #card-footer>
         <div class="card-footer-area">
           <div class="card-label">Private Data</div>
+          <Button :label="'Try it'" :theme="'blue'" :width="5" :height="2" rounded></Button>
+        </div>
+      </template>
+    </Card>
+    <Card :image="'src/asset/image/card-example-3.jpg'" :size="20" :link="'bench'">
+      <template #card-footer>
+        <div class="card-footer-area">
+          <div class="card-label">Web Bench</div>
+          <Button :label="'Try it'" :theme="'blue'" :width="5" :height="2" rounded></Button>
+        </div>
+      </template>
+    </Card>
+    <Card :image="'src/asset/image/card-example-1.jpg'" :size="20" :link="'palace'">
+      <template #card-footer>
+        <div class="card-footer-area">
+          <div class="card-label">Meta Palace</div>
           <Button :label="'Try it'" :theme="'blue'" :width="5" :height="2" rounded></Button>
         </div>
       </template>
